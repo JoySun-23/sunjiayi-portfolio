@@ -7,4027 +7,1611 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     :root {
       --bg: #F7F4EE;
       --bg-soft: #F1ECE3;
-
       --bg-card: rgba(255,255,255,0.62);
-
       --ink: #111111;
-
       --ink-mid: #4E4A44;
-
       --ink-light: #8C857B;
-
       --line: rgba(17,17,17,0.10);
-
       --accent: #C96C4A;
-
       --accent-2: #E7C6BA;
-
       --deep: #171717;
-
       --white: #ffffff;
-
       --success: #214A36;
-
       --shadow: 0 10px 40px rgba(17,17,17,0.08);
-
       --shadow-hover: 0 18px 50px rgba(17,17,17,0.12);
-
       --radius: 24px;
-
       --radius-sm: 16px;
-
       --max: 1240px;
-
       --pad: clamp(20px, 4vw, 48px);
-
       --serif: "Cormorant Garamond", "Noto Serif SC", serif;
-
       --sans: "Outfit", "PingFang SC", "Microsoft YaHei", sans-serif;
-
     }
-
-
 
     body {
-
       background:
-
         radial-gradient(circle at top left, rgba(201,108,74,0.10), transparent 28%),
-
         radial-gradient(circle at top right, rgba(231,198,186,0.30), transparent 24%),
-
         var(--bg);
-
       color: var(--ink);
-
       font-family: var(--sans);
-
       font-size: 16px;
-
       line-height: 1.8;
-
       -webkit-font-smoothing: antialiased;
-
       text-rendering: optimizeLegibility;
-
     }
-
-
 
     a { color: inherit; text-decoration: none; }
-
     img { display: block; width: 100%; height: 100%; object-fit: cover; }
-
     ul { list-style: none; }
 
-
-
     .container {
-
       width: min(100%, var(--max));
-
       margin: 0 auto;
-
       padding-left: var(--pad);
-
       padding-right: var(--pad);
-
     }
-
-
 
     .section {
-
       position: relative;
-
       padding: clamp(72px, 10vw, 120px) 0;
-
       border-bottom: 1px solid var(--line);
-
       scroll-margin-top: 88px;
-
     }
-
-
 
     .section-header {
-
       display: grid;
-
       grid-template-columns: 120px 1fr;
-
       gap: 28px;
-
       align-items: start;
-
       margin-bottom: 42px;
-
     }
-
-
 
     .section-index {
-
       font-family: var(--serif);
-
       font-size: 18px;
-
       color: var(--ink-light);
-
       padding-top: 8px;
-
     }
-
-
 
     .section-title-wrap h2 {
-
       font-family: var(--serif);
-
       font-size: clamp(34px, 4vw, 58px);
-
       line-height: 1;
-
       font-weight: 400;
-
       letter-spacing: -0.02em;
-
     }
-
-
 
     .section-subtitle {
-
       margin-top: 12px;
-
       color: var(--ink-light);
-
       max-width: 760px;
-
       font-size: 15px;
-
     }
-
-
 
     .eyebrow {
-
       display: inline-flex;
-
       align-items: center;
-
       gap: 10px;
-
       font-size: 12px;
-
       letter-spacing: 0.18em;
-
       text-transform: uppercase;
-
       color: var(--ink-light);
-
     }
-
-
 
     .eyebrow::before {
-
       content: "";
-
       width: 28px;
-
       height: 1px;
-
       background: var(--accent);
-
       display: block;
-
     }
-
-
 
     /* NAV */
-
     .navbar {
-
       position: fixed;
-
       top: 0; left: 0; right: 0;
-
       z-index: 1000;
-
       transition: background 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
-
       border-bottom: 1px solid transparent;
-
     }
-
-
 
     .navbar.scrolled {
-
       background: rgba(247,244,238,0.72);
-
       backdrop-filter: blur(18px);
-
       -webkit-backdrop-filter: blur(18px);
-
       border-bottom-color: rgba(17,17,17,0.08);
-
       box-shadow: 0 8px 30px rgba(17,17,17,0.05);
-
     }
-
-
 
     .nav-inner {
-
       height: 72px;
-
       display: flex;
-
       align-items: center;
-
       justify-content: space-between;
-
       gap: 20px;
-
     }
-
-
 
     .nav-brand {
-
       display: flex;
-
       flex-direction: column;
-
       line-height: 1.05;
-
       flex-shrink: 0;
-
     }
-
-
 
     .nav-brand strong {
-
       font-family: var(--serif);
-
       font-size: 26px;
-
       font-weight: 500;
-
       letter-spacing: -0.02em;
-
     }
-
-
 
     .nav-brand span {
-
       font-size: 11px;
-
       letter-spacing: 0.14em;
-
       text-transform: uppercase;
-
       color: var(--ink-light);
-
       margin-top: 2px;
-
     }
-
-
 
     .nav-links {
-
       display: flex;
-
       align-items: center;
-
       gap: 28px;
-
     }
-
-
 
     .nav-links a {
-
       position: relative;
-
       font-size: 14px;
-
       color: var(--ink-mid);
-
       transition: color 0.25s ease;
-
     }
-
-
 
     .nav-links a::after {
-
       content: "";
-
       position: absolute;
-
       left: 0;
-
       bottom: -8px;
-
       width: 100%;
-
       height: 2px;
-
       transform: scaleX(0);
-
       transform-origin: left;
-
       background: var(--accent);
-
       transition: transform 0.25s ease;
-
     }
-
-
 
     .nav-links a:hover,
-
     .nav-links a.active {
-
       color: var(--ink);
-
     }
-
-
 
     .nav-links a.active::after,
-
     .nav-links a:hover::after {
-
       transform: scaleX(1);
-
     }
-
-
 
     .nav-cta {
-
       padding: 10px 16px;
-
       border: 1px solid rgba(17,17,17,0.12);
-
       border-radius: 999px;
-
       font-size: 13px;
-
       font-weight: 500;
-
       transition: all 0.25s ease;
-
       flex-shrink: 0;
-
     }
-
-
 
     .nav-cta:hover {
-
       border-color: var(--accent);
-
       background: var(--accent);
-
       color: var(--white);
-
     }
-
-
 
     /* HERO */
-
     #hero {
-
       padding-top: 120px;
-
       padding-bottom: 56px;
-
       min-height: 100vh;
-
       display: flex;
-
       align-items: center;
-
       border-bottom: 1px solid var(--line);
-
     }
 
-
-
-    .hero-grid {
-
+    /* .hero-grid {
       display: grid;
-
       grid-template-columns: 1.2fr 0.8fr;
-
       gap: 40px;
-
       align-items: end;
-
+    } */
+     /* 修改 Hero 布局：让标题和头像并排 */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.6fr; /* 稍微给左侧名字+头像更多空间 */
+      gap: 40px;
+      align-items: center;
     }
-
-
 
     .hero-left {
-
-      padding-top: 20px;
-
+      position: relative;
     }
 
-
-
-    /* ====== HERO AVATAR ====== */
-
+    /* 重点：头像放大并绝对定位/弹性定位在名字旁边 */
     .hero-avatar {
-
-      width: 110px;
-
-      height: 110px;
-
-      border-radius: 50%;
-
-      overflow: hidden;
-
-      border: 2.5px solid var(--accent-2);
-
-      box-shadow: 0 8px 32px rgba(201,108,74,0.20), 0 2px 8px rgba(17,17,17,0.10);
-
-      margin-bottom: 20px;
-
-      flex-shrink: 0;
-
-      background: var(--bg-soft);
-
+      position: absolute;
+      right: -20px; /* 调整它相对于名字的位置 */
+      top: 100px;  /* 调整高度 */
+      width: clamp(160px, 18vw, 240px); /* 放大尺寸 */
+      height: clamp(160px, 18vw, 240px);
+      z-index: 2;
+      border: 4px solid var(--white); /* 增加白边让它更突出 */
     }
 
-
-
-    .hero-avatar img {
-
-      width: 100%;
-
-      height: 100%;
-
-      object-fit: cover;
-
-      display: block;
-
+    /* 移动端适配：缩小头像并移回上方 */
+    @media (max-width: 820px) {
+      .hero-avatar {
+        position: relative;
+        right: 0;
+        top: 0;
+        margin: 0 auto 30px;
+        width: 140px;
+        height: 140px;
+      }
     }
 
-
+    /* .hero-left {
+      padding-top: 20px;
+    } */
 
     .hero-meta {
-
       display: flex;
-
       flex-wrap: wrap;
-
       gap: 10px;
-
       margin-bottom: 26px;
-
     }
-
-
 
     .hero-badge {
-
       padding: 8px 12px;
-
       font-size: 12px;
-
       color: var(--ink-mid);
-
       border: 1px solid rgba(17,17,17,0.10);
-
       border-radius: 999px;
-
       background: rgba(255,255,255,0.52);
-
       backdrop-filter: blur(10px);
-
     }
-
-
 
     .hero-title {
-
       font-family: var(--serif);
-
       font-size: clamp(64px, 10vw, 136px);
-
       line-height: 0.92;
-
       letter-spacing: -0.05em;
-
       font-weight: 400;
-
     }
-
-
 
     .hero-title .accent {
-
       color: var(--accent);
-
       font-style: italic;
-
     }
-
-
 
     .hero-subtitle {
-
       margin-top: 28px;
-
       max-width: 700px;
-
       font-size: clamp(18px, 2vw, 24px);
-
       line-height: 1.6;
-
       color: var(--ink-mid);
-
     }
-
-
 
     .hero-subtitle strong {
-
       color: var(--ink);
-
       font-weight: 600;
-
     }
-
-
 
     .hero-intro {
-
       margin-top: 24px;
-
       max-width: 760px;
-
       color: var(--ink-mid);
-
       font-size: 16px;
-
     }
-
-
 
     .hero-actions {
-
       display: flex;
-
       flex-wrap: wrap;
-
       gap: 14px;
-
       margin-top: 36px;
-
     }
-
-
 
     .btn-primary, .btn-secondary {
-
       display: inline-flex;
-
       align-items: center;
-
       justify-content: center;
-
       min-width: 150px;
-
       padding: 14px 22px;
-
       border-radius: 999px;
-
       font-size: 14px;
-
       font-weight: 600;
-
       transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
-
     }
-
-
 
     .btn-primary {
-
       background: var(--ink);
-
       color: var(--white);
-
       box-shadow: var(--shadow);
-
     }
-
-
 
     .btn-primary:hover {
-
       transform: translateY(-2px);
-
       box-shadow: var(--shadow-hover);
-
     }
-
-
 
     .btn-secondary {
-
       border: 1px solid rgba(17,17,17,0.12);
-
       background: rgba(255,255,255,0.55);
-
     }
-
-
 
     .btn-secondary:hover {
-
       border-color: var(--accent);
-
       color: var(--accent);
-
       transform: translateY(-2px);
-
     }
-
-
 
     .hero-right {
-
       display: grid;
-
       gap: 18px;
-
     }
-
-
 
     .hero-card {
-
       background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,255,255,0.58));
-
       border: 1px solid rgba(17,17,17,0.08);
-
       border-radius: 28px;
-
       padding: 22px;
-
       box-shadow: var(--shadow);
-
       backdrop-filter: blur(14px);
-
     }
-
-
 
     .hero-card h3 {
-
       font-family: var(--serif);
-
       font-size: 28px;
-
       line-height: 1.1;
-
       font-weight: 500;
-
       margin-bottom: 12px;
-
     }
-
-
 
     .hero-card p {
-
       color: var(--ink-mid);
-
       font-size: 15px;
-
     }
-
-
 
     .hero-highlight {
-
       display: grid;
-
       grid-template-columns: repeat(2, 1fr);
-
       gap: 14px;
-
     }
-
-
 
     .mini-card {
-
       padding: 18px;
-
       border-radius: 20px;
-
       border: 1px solid rgba(17,17,17,0.08);
-
       background: rgba(255,255,255,0.58);
-
     }
-
-
 
     .mini-card strong {
-
       display: block;
-
       font-size: 13px;
-
       color: var(--ink-light);
-
       letter-spacing: 0.08em;
-
       text-transform: uppercase;
-
       margin-bottom: 8px;
-
     }
-
-
 
     .mini-card span {
-
       display: block;
-
       font-family: var(--serif);
-
       font-size: 28px;
-
       line-height: 1;
-
     }
-
-
 
     /* STATS */
-
     .stats-wrap {
-
       padding: 28px 0 0;
-
     }
-
-
 
     .stats-grid {
-
       display: grid;
-
       grid-template-columns: repeat(4, 1fr);
-
       gap: 18px;
-
     }
-
-
 
     .stat-card {
-
       padding: 24px;
-
       border-radius: 22px;
-
       background: rgba(255,255,255,0.55);
-
       border: 1px solid rgba(17,17,17,0.08);
-
       box-shadow: var(--shadow);
-
       min-height: 150px;
-
     }
-
-
 
     .stat-number {
-
       font-family: var(--serif);
-
       font-size: clamp(38px, 4vw, 56px);
-
       line-height: 1;
-
       letter-spacing: -0.04em;
-
       color: var(--ink);
-
       margin-bottom: 10px;
-
     }
-
-
 
     .stat-number .unit {
-
       color: var(--accent);
-
     }
-
-
 
     .stat-label {
-
       font-size: 15px;
-
       color: var(--ink);
-
       margin-bottom: 8px;
-
       font-weight: 500;
-
     }
-
-
 
     .stat-desc {
-
       font-size: 13px;
-
       color: var(--ink-light);
-
       line-height: 1.7;
-
     }
-
-
 
     /* ABOUT */
-
     .about-grid {
-
       display: grid;
-
       grid-template-columns: 320px 1fr;
-
       gap: 38px;
-
     }
-
-
 
     .about-panel,
-
     .about-main {
-
       background: rgba(255,255,255,0.52);
-
       border: 1px solid rgba(17,17,17,0.08);
-
       border-radius: 28px;
-
       box-shadow: var(--shadow);
-
       backdrop-filter: blur(12px);
-
     }
-
-
 
     .about-panel {
-
       padding: 26px;
-
     }
-
-
 
     .panel-title {
-
       font-size: 12px;
-
       text-transform: uppercase;
-
       letter-spacing: 0.18em;
-
       color: var(--ink-light);
-
       margin-bottom: 18px;
-
     }
-
-
 
     .edu-block + .edu-block {
-
       margin-top: 20px;
-
       padding-top: 20px;
-
       border-top: 1px solid var(--line);
-
     }
-
-
 
     .edu-school {
-
       font-size: 18px;
-
       color: var(--ink);
-
       font-weight: 600;
-
     }
-
-
 
     .edu-major {
-
       margin-top: 4px;
-
       font-size: 14px;
-
       color: var(--ink-mid);
-
     }
-
-
 
     .edu-time {
-
       margin-top: 6px;
-
       font-size: 13px;
-
       color: var(--ink-light);
-
     }
-
-
 
     .honor-list li {
-
       padding: 12px 0;
-
       border-bottom: 1px solid rgba(17,17,17,0.06);
-
       font-size: 14px;
-
       color: var(--ink-mid);
-
     }
-
-
 
     .honor-list li:last-child { border-bottom: none; }
 
-
-
     .about-main {
-
       padding: 32px;
-
     }
-
-
 
     .about-lead {
-
       font-family: var(--serif);
-
       font-size: clamp(28px, 3vw, 42px);
-
       line-height: 1.35;
-
       color: var(--ink);
-
       letter-spacing: -0.02em;
-
     }
-
-
 
     .about-copy {
-
       margin-top: 20px;
-
       color: var(--ink-mid);
-
       font-size: 16px;
-
       max-width: 850px;
-
     }
-
-
 
     .tag-list {
-
       display: flex;
-
       flex-wrap: wrap;
-
       gap: 10px;
-
       margin-top: 28px;
-
     }
-
-
 
     .tag {
-
       padding: 8px 14px;
-
       border-radius: 999px;
-
       background: var(--bg-soft);
-
       border: 1px solid rgba(17,17,17,0.08);
-
       font-size: 13px;
-
       color: var(--ink-mid);
-
     }
-
-
 
     /* CASE */
-
     .case-hero {
-
       display: grid;
-
       grid-template-columns: 1.05fr 0.95fr;
-
       gap: 26px;
-
       margin-bottom: 28px;
-
     }
-
-
 
     .case-intro-card,
-
     .case-business-card {
-
       background: rgba(255,255,255,0.62);
-
       border: 1px solid rgba(17,17,17,0.08);
-
       border-radius: 30px;
-
       box-shadow: var(--shadow);
-
       padding: 30px;
-
     }
-
-
 
     .case-intro-title {
-
       font-family: var(--serif);
-
       font-size: clamp(34px, 4vw, 58px);
-
       line-height: 1.02;
-
       letter-spacing: -0.03em;
-
       margin-top: 16px;
-
       margin-bottom: 16px;
-
     }
-
-
 
     .case-intro-title em {
-
       color: var(--accent);
-
       font-style: italic;
-
     }
-
-
 
     .case-summary {
-
       color: var(--ink-mid);
-
       font-size: 16px;
-
       max-width: 680px;
-
     }
-
-
 
     .case-meta {
-
       display: grid;
-
       grid-template-columns: repeat(4, 1fr);
-
       gap: 14px;
-
       margin-top: 24px;
-
     }
-
-
 
     .case-meta-item {
-
       padding: 16px;
-
       border-radius: 18px;
-
       background: var(--bg-soft);
-
       border: 1px solid rgba(17,17,17,0.06);
-
     }
-
-
 
     .case-meta-item span {
-
       display: block;
-
       font-size: 11px;
-
       letter-spacing: 0.16em;
-
       text-transform: uppercase;
-
       color: var(--ink-light);
-
       margin-bottom: 8px;
-
     }
-
-
 
     .case-meta-item strong {
-
       font-size: 14px;
-
       color: var(--ink);
-
       line-height: 1.6;
-
     }
-
-
 
     .business-title {
-
       font-family: var(--serif);
-
       font-size: 30px;
-
       line-height: 1.12;
-
       margin-bottom: 14px;
-
     }
-
-
 
     .business-list {
-
       display: grid;
-
       gap: 14px;
-
       margin-top: 18px;
-
     }
-
-
 
     .business-list li {
-
       padding: 14px 16px;
-
       border-radius: 18px;
-
       background: var(--bg-soft);
-
       border-left: 3px solid var(--accent);
-
       color: var(--ink-mid);
-
       font-size: 14px;
-
       line-height: 1.8;
-
     }
-
-
 
     .case-steps {
-
       display: grid;
-
       gap: 18px;
-
       margin-top: 20px;
-
     }
-
-
 
     .case-step {
-
       display: grid;
-
       grid-template-columns: 120px 1fr;
-
       gap: 22px;
-
       padding: 28px;
-
       border-radius: 28px;
-
       background: rgba(255,255,255,0.56);
-
       border: 1px solid rgba(17,17,17,0.08);
-
       box-shadow: var(--shadow);
-
     }
-
-
 
     .step-side {
-
       display: flex;
-
       flex-direction: column;
-
       gap: 8px;
-
     }
-
-
 
     .step-num {
-
       font-family: var(--serif);
-
       font-size: 52px;
-
       line-height: 1;
-
       color: rgba(201,108,74,0.40);
-
     }
-
-
 
     .step-tag {
-
       font-size: 12px;
-
       text-transform: uppercase;
-
       letter-spacing: 0.16em;
-
       color: var(--ink-light);
-
     }
-
-
 
     .step-title {
-
       font-family: var(--serif);
-
       font-size: 32px;
-
       line-height: 1.15;
-
       margin-bottom: 12px;
-
     }
-
-
 
     .step-content p {
-
       color: var(--ink-mid);
-
       font-size: 15px;
-
     }
-
-
 
     .quote-box {
-
       margin-top: 18px;
-
       padding: 18px 20px;
-
       border-radius: 18px;
-
       background: linear-gradient(180deg, rgba(201,108,74,0.08), rgba(201,108,74,0.03));
-
       border: 1px solid rgba(201,108,74,0.16);
-
     }
-
-
 
     .quote-box p {
-
       font-family: var(--serif);
-
       font-size: 22px;
-
       line-height: 1.5;
-
       color: var(--ink);
-
     }
-
-
 
     .metric-row {
-
       display: flex;
-
       flex-wrap: wrap;
-
       gap: 14px;
-
       margin-top: 18px;
-
     }
-
-
 
     .metric-pill {
-
       padding: 12px 16px;
-
       border-radius: 999px;
-
       border: 1px solid rgba(17,17,17,0.08);
-
       background: var(--bg-soft);
-
       font-size: 14px;
-
       color: var(--ink-mid);
-
     }
-
-
 
     .metric-pill strong {
-
       color: var(--ink);
-
       margin-right: 8px;
-
       font-family: var(--serif);
-
       font-size: 22px;
-
       vertical-align: middle;
-
     }
-
-
 
     /* INSIGHTS */
-
     .insight-list {
-
       display: grid;
-
       gap: 18px;
-
     }
-
-
 
     .insight-item {
-
       position: relative;
-
       padding: 28px;
-
       border-radius: 26px;
-
       background: rgba(255,255,255,0.56);
-
       border: 1px solid rgba(17,17,17,0.08);
-
       box-shadow: var(--shadow);
-
       transition: transform 0.25s ease, box-shadow 0.25s ease;
-
     }
-
-
 
     .insight-item:hover {
-
       transform: translateY(-4px);
-
       box-shadow: var(--shadow-hover);
-
     }
-
-
 
     .insight-tag {
-
       color: var(--accent);
-
       font-size: 12px;
-
       letter-spacing: 0.16em;
-
       text-transform: uppercase;
-
       margin-bottom: 10px;
-
       font-weight: 600;
-
     }
-
-
 
     .insight-title {
-
       font-family: var(--serif);
-
       font-size: 32px;
-
       line-height: 1.15;
-
       margin-bottom: 12px;
-
     }
-
-
 
     .insight-body {
-
       color: var(--ink-mid);
-
       max-width: 900px;
-
     }
-
-
 
     /* SKILLS */
-
     .skills-layout {
-
       display: grid;
-
       grid-template-columns: 280px 1fr;
-
       gap: 24px;
-
     }
-
-
 
     .skills-note,
-
     .skills-board {
-
       border-radius: 28px;
-
       background: rgba(255,255,255,0.58);
-
       border: 1px solid rgba(17,17,17,0.08);
-
       box-shadow: var(--shadow);
-
     }
-
-
 
     .skills-note {
-
       padding: 28px;
-
     }
-
-
 
     .skills-note p {
-
       color: var(--ink-mid);
-
       font-size: 15px;
-
     }
-
-
 
     .skills-board {
-
       padding: 28px;
-
     }
-
-
 
     .skill-groups {
-
       display: grid;
-
       grid-template-columns: repeat(2, 1fr);
-
       gap: 28px;
-
     }
-
-
 
     .skill-group-title {
-
       font-size: 12px;
-
       letter-spacing: 0.18em;
-
       text-transform: uppercase;
-
       color: var(--ink-light);
-
       margin-bottom: 18px;
-
     }
-
-
 
     .skill-list {
-
       display: grid;
-
       gap: 14px;
-
     }
-
-
 
     .skill-item {
-
       display: grid;
-
       gap: 8px;
-
     }
-
-
 
     .skill-item-head {
-
       display: flex;
-
       align-items: center;
-
       justify-content: space-between;
-
       gap: 16px;
-
       font-size: 14px;
-
       color: var(--ink);
-
     }
-
-
 
     .skill-item-head span:last-child {
-
       color: var(--ink-light);
-
       font-size: 13px;
-
     }
-
-
 
     .skill-bar {
-
       height: 8px;
-
       border-radius: 999px;
-
       background: rgba(17,17,17,0.08);
-
       overflow: hidden;
-
     }
-
-
 
     .skill-bar-fill {
-
       height: 100%;
-
       width: 0;
-
       border-radius: 999px;
-
       background: linear-gradient(90deg, var(--accent), #d9a18b);
-
       transition: width 1s cubic-bezier(.2,.8,.2,1);
-
     }
-
-
 
     /* MULTIDIMENSIONAL */
-
     .multi-lead {
-
       margin-bottom: 24px;
-
       max-width: 780px;
-
       color: var(--ink-mid);
-
       font-size: 16px;
-
     }
-
-
 
     .multi-grid {
-
       display: grid;
-
       grid-template-columns: repeat(4, 1fr);
-
       gap: 18px;
-
     }
-
-
 
     .grid-item {
-
       display: flex;
-
       flex-direction: column;
-
       min-height: 100%;
-
       padding: 16px;
-
       border-radius: 24px;
-
       background: rgba(255,255,255,0.60);
-
       border: 1px solid rgba(17,17,17,0.08);
-
       box-shadow: var(--shadow);
-
       transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
-
     }
-
-
 
     .grid-item:hover {
-
       transform: translateY(-6px);
-
       box-shadow: var(--shadow-hover);
-
       border-color: rgba(201,108,74,0.28);
-
     }
-
-
 
     .image-container {
-
       position: relative;
-
       height: 220px;
-
       border-radius: 18px;
-
       overflow: hidden;
-
       margin-bottom: 18px;
-
       background: linear-gradient(135deg, #e7ddd2, #f6f1ea);
-
     }
-
-
 
     .image-container img {
-
       transition: transform 0.45s ease;
-
     }
-
-
 
     .grid-item:hover .image-container img {
-
       transform: scale(1.08);
-
     }
-
-
 
     .grid-kicker {
-
       font-size: 11px;
-
       letter-spacing: 0.16em;
-
       text-transform: uppercase;
-
       color: var(--accent);
-
       margin-bottom: 8px;
-
       font-weight: 600;
-
     }
-
-
 
     .grid-item h3 {
-
       font-family: var(--serif);
-
       font-size: 28px;
-
       line-height: 1.15;
-
       margin-bottom: 10px;
-
     }
-
-
 
     .grid-item > p {
-
       color: var(--ink-mid);
-
       font-size: 14px;
-
       margin-bottom: 16px;
-
     }
-
-
 
     .insight-box {
-
       margin-top: auto;
-
       padding: 16px;
-
       border-radius: 18px;
-
       background: linear-gradient(180deg, rgba(201,108,74,0.08), rgba(201,108,74,0.03));
-
       border: 1px solid rgba(201,108,74,0.14);
-
     }
-
-
 
     .insight-box strong {
-
       display: block;
-
       font-size: 13px;
-
       color: var(--ink);
-
       margin-bottom: 10px;
-
     }
-
-
 
     .insight-box ul {
-
       display: grid;
-
       gap: 8px;
-
       padding-left: 18px;
-
       list-style: disc;
-
     }
-
-
 
     .insight-box li {
-
       color: var(--ink-mid);
-
       font-size: 13px;
-
       line-height: 1.75;
-
     }
 
-
-
-    /* ============================================
-
-       MULTI ALT GRID — 后 5 块差异化卡片设计
-
-       ============================================ */
-
-
-
-    .multi-alt-grid {
-
-      display: grid;
-
-      grid-template-columns: repeat(4, 1fr);
-
-      gap: 18px;
-
-      margin-top: 18px;
-
-    }
-
-
-
-    .alt-card {
-
-      border-radius: 24px;
-
-      background: rgba(255,255,255,0.60);
-
-      border: 1px solid rgba(17,17,17,0.08);
-
-      box-shadow: var(--shadow);
-
-      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
-
-      padding: 24px;
-
-    }
-
-
-
-    .alt-card:hover {
-
-      transform: translateY(-5px);
-
-      box-shadow: var(--shadow-hover);
-
-      border-color: rgba(201,108,74,0.22);
-
-    }
-
-
-
-    .alt-card-kicker {
-
-      font-size: 11px;
-
-      letter-spacing: 0.16em;
-
-      text-transform: uppercase;
-
-      color: var(--accent);
-
-      margin-bottom: 8px;
-
-      font-weight: 600;
-
-    }
-
-
-
-    .alt-card-title {
-
-      font-family: var(--serif);
-
-      font-size: 24px;
-
-      line-height: 1.2;
-
-      margin-bottom: 10px;
-
-    }
-
-
-
-    .alt-card-desc {
-
-      color: var(--ink-mid);
-
-      font-size: 14px;
-
-      line-height: 1.7;
-
-    }
-
-
-
-    /* ---- Card A: 活动策划 — Process / Delivery (2 cols) ---- */
-
-    .alt-process {
-
-      grid-column: span 2;
-
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 24px;
-
-      align-items: start;
-
-    }
-
-
-
-    .alt-process-right {
-
-      display: flex;
-
-      flex-direction: column;
-
-      justify-content: space-between;
-
-      height: 100%;
-
-    }
-
-
-
-    .process-stages {
-
-      display: grid;
-
-      grid-template-columns: repeat(4, 1fr);
-
-      gap: 6px;
-
-      align-items: stretch;
-
-    }
-
-
-
-    .process-stage {
-
-      display: flex;
-
-      flex-direction: column;
-
-      align-items: center;
-
-      text-align: center;
-
-      gap: 6px;
-
-      padding: 12px 6px;
-
-      border-radius: 14px;
-
-      background: var(--bg-soft);
-
-      border: 1px solid rgba(17,17,17,0.07);
-
-      position: relative;
-
-    }
-
-
-
-    .process-stage:not(:last-child)::after {
-
-      content: "→";
-
-      position: absolute;
-
-      right: -9px;
-
-      top: 50%;
-
-      transform: translateY(-50%);
-
-      color: var(--accent-2);
-
-      font-size: 13px;
-
-      z-index: 1;
-
-    }
-
-
-
-    .ps-num {
-
-      font-family: var(--serif);
-
-      font-size: 20px;
-
-      color: var(--accent);
-
-      line-height: 1;
-
-    }
-
-
-
-    .ps-label {
-
-      font-size: 11px;
-
-      color: var(--ink-mid);
-
-      line-height: 1.5;
-
-    }
-
-
-
-    .process-stat {
-
-      margin-top: 18px;
-
-      display: flex;
-
-      align-items: baseline;
-
-      gap: 10px;
-
-      padding: 14px 18px;
-
-      border-radius: 16px;
-
-      background: linear-gradient(135deg, rgba(201,108,74,0.10), rgba(201,108,74,0.04));
-
-      border: 1px solid rgba(201,108,74,0.14);
-
-    }
-
-
-
-    .ps-big {
-
-      font-family: var(--serif);
-
-      font-size: 52px;
-
-      line-height: 1;
-
-      letter-spacing: -0.04em;
-
-      color: var(--accent);
-
-    }
-
-
-
-    .ps-unit {
-
-      font-size: 13px;
-
-      color: var(--ink-light);
-
-      line-height: 1.5;
-
-    }
-
-
-
-    /* ---- Card B: 科研训练 — Research Cycle (1 col) ---- */
-
-    .alt-research {
-
-      grid-column: span 1;
-
-    }
-
-
-
-    .research-cycle {
-
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 6px;
-
-      margin: 14px 0 16px;
-
-      position: relative;
-
-      padding: 10px;
-
-      border-radius: 18px;
-
-      background: var(--bg-soft);
-
-      border: 1px solid rgba(17,17,17,0.06);
-
-    }
-
-
-
-    .research-cycle::before {
-
-      content: "↻";
-
-      position: absolute;
-
-      top: 50%;
-
-      left: 50%;
-
-      transform: translate(-50%, -50%);
-
-      font-size: 22px;
-
-      color: rgba(201,108,74,0.30);
-
-      pointer-events: none;
-
-    }
-
-
-
-    .rc-item {
-
-      padding: 10px 8px;
-
-      border-radius: 12px;
-
-      background: rgba(255,255,255,0.80);
-
-      border: 1px solid rgba(17,17,17,0.07);
-
-      text-align: center;
-
-    }
-
-
-
-    .rc-num {
-
-      font-family: var(--serif);
-
-      font-size: 16px;
-
-      color: rgba(201,108,74,0.6);
-
-      line-height: 1;
-
-      margin-bottom: 3px;
-
-    }
-
-
-
-    .rc-label {
-
-      font-size: 12px;
-
-      font-weight: 600;
-
-      color: var(--ink);
-
-    }
-
-
-
-    .rc-loop-note {
-
-      font-size: 12px;
-
-      color: var(--ink-light);
-
-      text-align: center;
-
-      letter-spacing: 0.06em;
-
-      margin-bottom: 12px;
-
-    }
-
-
-
-    /* ---- Card C: 持续输入 — Product Feed (1 col) ---- */
-
-    .alt-feed {
-
-      grid-column: span 1;
-
-    }
-
-
-
-    .feed-status-row {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 8px;
-
-      margin: 10px 0 12px;
-
-    }
-
-
-
-    .feed-dot {
-
-      width: 7px;
-
-      height: 7px;
-
-      border-radius: 50%;
-
-      background: var(--accent);
-
-      flex-shrink: 0;
-
-      animation: pulse-feed 2.2s ease-in-out infinite;
-
-    }
-
-
-
-    @keyframes pulse-feed {
-
-      0%, 100% { opacity: 1; transform: scale(1); }
-
-      50% { opacity: 0.55; transform: scale(0.82); }
-
-    }
-
-
-
-    .feed-status-text {
-
-      font-size: 12px;
-
-      color: var(--ink-light);
-
-    }
-
-
-
-    .feed-list {
-
-      display: grid;
-
-      gap: 6px;
-
-    }
-
-
-
-    .feed-item {
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 10px;
-
-      padding: 8px 12px;
-
-      border-radius: 12px;
-
-      background: var(--bg-soft);
-
-      border: 1px solid rgba(17,17,17,0.06);
-
-      transition: border-color 0.22s ease, transform 0.22s ease;
-
-    }
-
-
-
-    .feed-item:hover {
-
-      border-color: rgba(201,108,74,0.25);
-
-      transform: translateX(3px);
-
-    }
-
-
-
-    .feed-product {
-
-      font-size: 12px;
-
-      font-weight: 700;
-
-      color: var(--ink);
-
-      flex-shrink: 0;
-
-      min-width: 64px;
-
-    }
-
-
-
-    .feed-note {
-
-      font-size: 11px;
-
-      color: var(--ink-light);
-
-      text-align: right;
-
-      line-height: 1.4;
-
-    }
-
-
-
-    .feed-footer {
-
-      margin-top: 12px;
-
-      font-size: 12px;
-
-      color: var(--ink-light);
-
-      line-height: 1.6;
-
-    }
-
-
-
-    /* ---- Card D: 团队角色 — Roles (1 col) ---- */
-
-    .alt-roles {
-
-      grid-column: span 1;
-
-    }
-
-
-
-    .roles-list {
-
-      display: grid;
-
-      gap: 9px;
-
-      margin-top: 14px;
-
-    }
-
-
-
-    .role-item {
-
-      display: flex;
-
-      align-items: flex-start;
-
-      gap: 12px;
-
-      padding: 12px 14px;
-
-      border-radius: 16px;
-
-      background: var(--bg-soft);
-
-      border: 1px solid rgba(17,17,17,0.07);
-
-      transition: border-color 0.25s ease, transform 0.25s ease;
-
-    }
-
-
-
-    .role-item:hover {
-
-      border-color: rgba(201,108,74,0.30);
-
-      transform: translateX(4px);
-
-    }
-
-
-
-    .role-icon {
-
-      font-size: 18px;
-
-      line-height: 1;
-
-      flex-shrink: 0;
-
-      padding-top: 2px;
-
-    }
-
-
-
-    .role-name {
-
-      font-size: 13px;
-
-      font-weight: 700;
-
-      color: var(--ink);
-
-      margin-bottom: 3px;
-
-      letter-spacing: 0.02em;
-
-    }
-
-
-
-    .role-desc {
-
-      font-size: 12px;
-
-      color: var(--ink-mid);
-
-      line-height: 1.5;
-
-    }
-
-
-
-    /* ---- Card E: Why Me — Manifesto (3 cols) ---- */
-
-    .alt-manifesto {
-
-      grid-column: span 3;
-
-      background: linear-gradient(135deg, #161412, #1e1a17);
-
-      border-color: rgba(255,255,255,0.06);
-
+    .story-card {
+      background: linear-gradient(135deg, rgba(23,23,23,0.96), rgba(43,43,43,0.92));
       color: var(--white);
-
-      padding: 30px 32px;
-
     }
 
-
-
-    .alt-manifesto:hover {
-
-      border-color: rgba(201,108,74,0.40);
-
-      transform: translateY(-4px);
-
+    .story-card .grid-kicker,
+    .story-card > p {
+      color: rgba(255,255,255,0.76);
     }
 
-
-
-    .alt-manifesto .alt-card-kicker {
-
-      color: var(--accent-2);
-
-    }
-
-
-
-    .alt-manifesto .alt-card-title {
-
+    .story-card h3,
+    .story-card .insight-box strong {
       color: var(--white);
-
-      font-size: clamp(22px, 2.4vw, 34px);
-
-      margin-bottom: 6px;
-
     }
 
-
-
-    .manifesto-intro {
-
-      font-size: 14px;
-
-      color: rgba(255,255,255,0.55);
-
-      margin-bottom: 22px;
-
+    .story-card .insight-box {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.10);
     }
 
-
-
-    .manifesto-pillars {
-
-      display: grid;
-
-      grid-template-columns: 1fr auto 1fr auto 1fr;
-
-      gap: 0;
-
-      padding-top: 20px;
-
-      border-top: 1px solid rgba(255,255,255,0.08);
-
+    .story-card .insight-box li {
+      color: rgba(255,255,255,0.78);
     }
 
-
-
-    .manifesto-divider {
-
-      width: 1px;
-
-      background: rgba(255,255,255,0.10);
-
-      margin: 0 24px;
-
-    }
-
-
-
-    .manifesto-pillar {}
-
-
-
-    .mp-num {
-
-      font-family: var(--serif);
-
-      font-size: 13px;
-
-      color: var(--accent);
-
-      margin-bottom: 8px;
-
-      letter-spacing: 0.12em;
-
-    }
-
-
-
-    .mp-keyword {
-      font-family: var(--serif);
-
-      font-size: clamp(26px, 2.6vw, 36px);
-
-      line-height: 1.05;
-
-      color: var(--white);
-
-      margin-bottom: 10px;
-
-      letter-spacing: -0.02em;
-
-    }
-
-    .mp-desc {
-
-      font-size: 13px;
-
-      color: rgba(255,255,255,0.58);
-
-      line-height: 1.75;
-
-    }
-
-
-
-    /* ============================================
-
-       CONTACT
-
-       ============================================ */
-
+    /* CONTACT */
     #contact {
-
       background: linear-gradient(135deg, #151515, #1c1c1c);
-
       color: var(--white);
-
       border-bottom: none;
-
     }
-
-
 
     .contact-grid {
-
       display: grid;
-
       grid-template-columns: 1fr 1fr;
-
       gap: 26px;
-
       align-items: stretch;
-
     }
-
-
 
     .contact-main,
-
     .contact-side {
-
       padding: 34px;
-
       border-radius: 30px;
-
       border: 1px solid rgba(255,255,255,0.08);
-
       background: rgba(255,255,255,0.04);
-
       backdrop-filter: blur(10px);
-
     }
-
-
 
     .contact-title {
-
       font-family: var(--serif);
-
       font-size: clamp(40px, 5vw, 72px);
-
       line-height: 0.98;
-
       letter-spacing: -0.03em;
-
     }
-
-
 
     .contact-title em {
-
       font-style: italic;
-
       color: var(--accent-2);
-
     }
-
-
 
     .contact-desc {
-
       margin-top: 18px;
-
       color: rgba(255,255,255,0.72);
-
       font-size: 16px;
-
       max-width: 640px;
-
     }
-
-
 
     .contact-actions {
-
       display: flex;
-
       flex-wrap: wrap;
-
       gap: 14px;
-
       margin-top: 28px;
-
     }
-
-
 
     .contact-btn {
-
       display: inline-flex;
-
       align-items: center;
-
       justify-content: center;
-
       padding: 14px 22px;
-
       border-radius: 999px;
-
       font-size: 14px;
-
       font-weight: 600;
-
       transition: all 0.25s ease;
-
     }
-
-
 
     .contact-btn.primary {
-
       background: var(--accent);
-
       color: var(--white);
-
     }
-
-
 
     .contact-btn.primary:hover {
-
       transform: translateY(-2px);
-
       opacity: 0.92;
-
     }
-
-
 
     .contact-btn.ghost {
-
       border: 1px solid rgba(255,255,255,0.14);
-
       color: var(--white);
-
     }
-
-
 
     .contact-btn.ghost:hover {
-
       background: rgba(255,255,255,0.08);
-
     }
-
-
 
     .contact-list {
-
       display: grid;
-
       gap: 14px;
-
     }
-
-
 
     .contact-item {
-
       padding: 18px 20px;
-
       border-radius: 20px;
-
       background: rgba(255,255,255,0.05);
-
       border: 1px solid rgba(255,255,255,0.06);
-
       transition: transform 0.25s ease, border-color 0.25s ease;
-
     }
-
-
 
     .contact-item:hover {
-
       transform: translateY(-3px);
-
       border-color: rgba(231,198,186,0.35);
-
     }
-
-
 
     .contact-item-label {
-
       font-size: 11px;
-
       text-transform: uppercase;
-
       letter-spacing: 0.16em;
-
       color: rgba(255,255,255,0.44);
-
       margin-bottom: 6px;
-
     }
-
-
 
     .contact-item-value {
-
       font-size: 16px;
-
       color: rgba(255,255,255,0.88);
-
       word-break: break-all;
-
     }
-
-
 
     footer {
-
       background: #151515;
-
       color: rgba(255,255,255,0.45);
-
       padding: 24px 0 40px;
-
       border-top: 1px solid rgba(255,255,255,0.06);
-
     }
-
-
 
     .footer-inner {
-
       display: flex;
-
       align-items: center;
-
       justify-content: space-between;
-
       gap: 16px;
-
       flex-wrap: wrap;
-
       font-size: 13px;
-
     }
-
-
 
     /* Back to top */
-
     .back-to-top {
-
       position: fixed;
-
       right: 24px;
-
       bottom: 28px;
-
       z-index: 1001;
-
       width: 52px;
-
       height: 52px;
-
       border-radius: 50%;
-
       border: 1px solid rgba(17,17,17,0.10);
-
       background: rgba(255,255,255,0.74);
-
       backdrop-filter: blur(14px);
-
       box-shadow: var(--shadow);
-
       color: var(--ink);
-
       font-size: 20px;
-
       cursor: pointer;
-
       opacity: 0;
-
       visibility: hidden;
-
       transform: translateY(12px);
-
       transition: all 0.28s ease;
-
     }
-
-
 
     .back-to-top.show {
-
       opacity: 1;
-
       visibility: visible;
-
       transform: translateY(0);
-
     }
-
-
 
     .back-to-top:hover {
-
       transform: translateY(-3px);
-
       background: var(--accent);
-
       color: var(--white);
-
     }
-
-
 
     /* ANIMATION */
-
     .reveal-title,
-
     .reveal-up,
-
     .reveal-card {
-
       opacity: 0;
-
       transform: translateY(30px);
-
       transition: opacity 0.85s ease, transform 0.85s ease;
-
       will-change: transform, opacity;
-
     }
-
-
 
     .reveal-title {
-
       transform: translateY(50px);
-
     }
-
-
 
     .revealed {
-
       opacity: 1 !important;
-
       transform: translateY(0) !important;
-
     }
-
-
 
     /* mobile nav toggle */
-
     .nav-toggle {
-
       display: none;
-
       width: 42px;
-
       height: 42px;
-
       border-radius: 50%;
-
       border: 1px solid rgba(17,17,17,0.08);
-
       background: rgba(255,255,255,0.58);
-
       cursor: pointer;
-
       align-items: center;
-
       justify-content: center;
-
       font-size: 18px;
-
     }
-
-
-
-    /* ============================================
-
-       RESPONSIVE
-
-       ============================================ */
 
     @media (max-width: 1100px) {
-
       .hero-grid,
-
       .case-hero,
-
       .contact-grid,
-
       .about-grid,
-
       .skills-layout {
-
         grid-template-columns: 1fr;
-
       }
-
-
 
       .case-meta {
-
         grid-template-columns: repeat(2, 1fr);
-
       }
-
-
 
       .stats-grid {
-
         grid-template-columns: repeat(2, 1fr);
-
       }
-
-
 
       .multi-grid {
-
-        grid-template-columns: repeat(2, 1fr);
-
+        grid-template-columns: repeat(3, 1fr);
       }
-
-
-
-      .multi-alt-grid {
-
-        grid-template-columns: repeat(2, 1fr);
-
-      }
-
-
-
-      .alt-process {
-
-        grid-column: span 2;
-
-        grid-template-columns: 1fr 1fr;
-
-      }
-
-
-
-      .alt-manifesto {
-
-        grid-column: span 2;
-
-      }
-
-
-
-      .manifesto-pillars {
-
-        grid-template-columns: 1fr;
-
-        gap: 0;
-
-      }
-
-
-
-      .manifesto-divider {
-
-        display: none;
-
-      }
-
-
-
-      .manifesto-pillar {
-
-        padding: 16px 0;
-
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-
-      }
-
-
-
-      .manifesto-pillar:last-child {
-
-        border-bottom: none;
-
-        padding-bottom: 0;
-
-      }
-
     }
-
-
 
     @media (max-width: 820px) {
-
       .nav-toggle { display: inline-flex; }
 
-
-
       .nav-links {
-
         position: absolute;
-
         top: 72px;
-
         left: var(--pad);
-
         right: var(--pad);
-
         padding: 16px;
-
         border-radius: 20px;
-
         background: rgba(247,244,238,0.94);
-
         border: 1px solid rgba(17,17,17,0.08);
-
         backdrop-filter: blur(16px);
-
         box-shadow: var(--shadow);
-
         display: none;
-
         flex-direction: column;
-
         align-items: flex-start;
-
         gap: 14px;
-
       }
-
-
 
       .nav-links.show { display: flex; }
-
       .nav-cta { display: none; }
 
-
-
       .section-header,
-
       .case-step {
-
         grid-template-columns: 1fr;
-
       }
-
-
 
       .skill-groups,
-
       .hero-highlight {
-
         grid-template-columns: 1fr;
-
       }
-
-
 
       .multi-grid {
-
         grid-template-columns: repeat(2, 1fr);
-
       }
-
-
 
       .image-container {
-
         height: 180px;
-
       }
-
-
 
       .hero-title {
-
         font-size: clamp(54px, 16vw, 92px);
-
       }
-
-
 
       .contact-title {
-
         font-size: 48px;
-
       }
-
-
-
-      .alt-process {
-
-        grid-column: span 2;
-
-        grid-template-columns: 1fr;
-
-        gap: 16px;
-
-      }
-
-
-
-      .process-stages {
-
-        grid-template-columns: repeat(2, 1fr);
-
-      }
-
-
-
-      .process-stage:nth-child(2)::after { display: none; }
-
-      .process-stage:nth-child(4)::after { display: none; }
-
     }
-
-
 
     @media (max-width: 560px) {
-
       .stats-grid,
-
       .case-meta,
-
-      .multi-grid,
-
-      .multi-alt-grid {
-
+      .multi-grid {
         grid-template-columns: 1fr;
-
       }
-
-
-
-      .alt-process,
-
-      .alt-manifesto {
-
-        grid-column: span 1;
-
-      }
-
-
-
-      .alt-process {
-
-        grid-template-columns: 1fr;
-
-      }
-
-
 
       .hero-actions,
-
       .contact-actions {
-
         flex-direction: column;
-
         align-items: stretch;
-
       }
-
-
 
       .btn-primary, .btn-secondary,
-
       .contact-btn {
-
         width: 100%;
-
       }
-
-
 
       .back-to-top {
-
         right: 18px;
-
         bottom: 22px;
-
       }
-
     }
-
   </style>
-
 </head>
-
 <body>
 
-
-
   <!-- NAV -->
-
   <header class="navbar" id="navbar">
-
     <div class="container nav-inner">
-
       <a href="#hero" class="nav-brand">
-
         <strong>孙嘉仪</strong>
-
         <span>AI Product Manager</span>
-
       </a>
 
-
-
       <nav class="nav-links" id="navLinks">
-
         <a href="#about">关于</a>
-
         <a href="#gestar">案例</a>
-
         <a href="#insights">洞察</a>
-
         <a href="#skills">技能</a>
-
         <a href="#multidimensional-perspective">立体视角</a>
-
         <a href="#contact">联系</a>
-
       </nav>
 
-
-
       <a href="#contact" class="nav-cta">联系我</a>
-
       <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
-
     </div>
-
   </header>
 
-
-
   <!-- HERO -->
-
   <section id="hero">
-
     <div class="container">
-
       <div class="hero-grid">
-
         <div class="hero-left">
-
-
-
-          <!-- ====== HERO AVATAR ====== -->
-
-          <div class="hero-avatar reveal-up" style="transition-delay: -.06s;">
-
-            <img src="assets/images/avatar.jpg" alt="孙嘉仪" />
-
-          </div>
-
-
-
           <div class="hero-meta reveal-up">
-
             <span class="hero-badge">华中科技大学 · 电子信息硕士</span>
-
             <span class="hero-badge">2027届</span>
-
             <span class="hero-badge">AI 产品经理求职中</span>
-
             <span class="hero-badge">技术深度 × 产品思维 × 审美素养</span>
-
           </div>
-
-
 
           <h1 class="hero-title reveal-title">
-
             Sun<br>Jiayi<span class="accent">.</span>
-
           </h1>
 
-
-
           <p class="hero-subtitle reveal-up" style="transition-delay: .08s;">
-
-            我不是"只会写需求"的产品经理。  
-
+            我不是“只会写需求”的产品经理。  
             我是一个<strong>真正从 0 到 1 做出过 AI 系统</strong>，也能把技术翻译成用户价值的人。
-
           </p>
-
-
 
           <p class="hero-intro reveal-up" style="transition-delay: .16s;">
-
             华中科技大学电子信息硕士在读，主导完成 Gestar 项目：以 GNSS 卫星信号实现户外手势识别，
-
             从用户调研、系统设计、模型训练，到 Android 双平台 App 交付全链路独立负责。
-
             我希望成为一名真正能连接技术、产品与体验的 AI PM。
-
           </p>
-
-
 
           <div class="hero-actions reveal-up" style="transition-delay: .24s;">
-
             <a class="btn-primary" href="#gestar">查看核心案例</a>
-
             <a class="btn-secondary" href="#contact">联系我</a>
-
           </div>
-
         </div>
-
-
 
         <div class="hero-right">
-
           <div class="hero-card reveal-card">
-
             <span class="eyebrow">核心定位</span>
-
             <h3>会做系统，也会做产品</h3>
-
             <p>
-
-              从技术可行性到用户价值，从研究论文到双端产品交付，我希望让"复杂 AI 能力"变成"可被用户感知的体验优势"。
-
+              从技术可行性到用户价值，从研究论文到双端产品交付，我希望让“复杂 AI 能力”变成“可被用户感知的体验优势”。
             </p>
-
           </div>
-
-
 
           <div class="hero-highlight">
-
             <div class="mini-card reveal-card" style="transition-delay: .08s;">
-
               <strong>学术</strong>
-
               <span>CCF-A 一作在投</span>
-
             </div>
-
             <div class="mini-card reveal-card" style="transition-delay: .12s;">
-
               <strong>项目</strong>
-
               <span>端到端 AI 系统</span>
-
             </div>
-
             <div class="mini-card reveal-card" style="transition-delay: .16s;">
-
               <strong>荣誉</strong>
-
               <span>校三好 / 优干 / 奖学金</span>
-
             </div>
-
             <div class="mini-card reveal-card" style="transition-delay: .20s;">
-
               <strong>个性</strong>
-
               <span>模特 / 篮球 / 足球 / 旅行</span>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
-
-
 
       <div class="stats-wrap">
-
         <div class="stats-grid">
-
           <div class="stat-card reveal-card">
-
             <div class="stat-number counter" data-target="96.43" data-decimals="2">0<span class="unit">%</span></div>
-
             <div class="stat-label">Gestar 手势识别准确率</div>
-
             <div class="stat-desc">在真实户外环境中跑通核心识别能力，证明技术方案具备产品化潜力。</div>
-
           </div>
-
           <div class="stat-card reveal-card" style="transition-delay:.08s;">
-
             <div class="stat-number counter" data-target="5.81" data-decimals="2">0<span class="unit">ms</span></div>
-
             <div class="stat-label">单次推理延迟</div>
-
             <div class="stat-desc">支持实时交互，具备向手机、手表等端侧场景落地的可行性。</div>
-
           </div>
-
           <div class="stat-card reveal-card" style="transition-delay:.16s;">
-
             <div class="stat-number counter" data-target="33" data-decimals="0">0<span class="unit">+</span></div>
-
             <div class="stat-label">真实用户调研</div>
-
             <div class="stat-desc">覆盖 6 类户外场景，不是闭门造车，而是从真实需求中定义产品方向。</div>
-
           </div>
-
           <div class="stat-card reveal-card" style="transition-delay:.24s;">
-
             <div class="stat-number counter" data-target="150" data-decimals="0">0<span class="unit">+</span></div>
-
             <div class="stat-label">会议 / 活动交付规模</div>
-
             <div class="stat-desc">具备复杂项目统筹、跨角色协作与高标准交付能力。</div>
-
           </div>
-
         </div>
-
       </div>
-
     </div>
-
   </section>
-
-
 
   <!-- ABOUT -->
-
   <section class="section" id="about">
-
     <div class="container">
-
       <div class="section-header reveal-title">
-
         <div class="section-index">01</div>
-
         <div class="section-title-wrap">
-
           <h2>关于我</h2>
-
           <p class="section-subtitle">
-
             学历与专业是我的底座，但让我真正有辨识度的，是我能把技术深度、产品思维和审美感知同时放进一个人身上。
-
           </p>
-
         </div>
-
       </div>
-
-
 
       <div class="about-grid">
-
         <aside class="about-panel reveal-up">
-
           <div class="panel-title">教育背景</div>
-
           <div class="edu-block">
-
             <div class="edu-school">华中科技大学</div>
-
             <div class="edu-major">电子信息 · 硕士在读</div>
-
             <div class="edu-time">2024.09 — 2027.06</div>
-
           </div>
-
           <div class="edu-block">
-
             <div class="edu-school">华中科技大学</div>
-
             <div class="edu-major">通信工程 · 学士</div>
-
             <div class="edu-time">2020.09 — 2024.06 ｜ GPA 3.42 / 4.0</div>
-
           </div>
-
-
 
           <div class="panel-title" style="margin-top: 28px;">荣誉亮点</div>
-
           <ul class="honor-list">
-
             <li>校三好学生</li>
-
             <li>校优秀学生干部</li>
-
             <li>学业优秀二等奖学金</li>
-
             <li>校文体优秀奖学金</li>
-
             <li>校优秀毕业生</li>
-
           </ul>
-
         </aside>
 
-
-
         <div class="about-main reveal-up" style="transition-delay:.08s;">
-
           <h3 class="about-lead">
-
-            我希望成为的，不只是"理解产品"的 PM，  
-
+            我希望成为的，不只是“理解产品”的 PM，  
             而是一个<strong style="font-weight:600;">能把复杂 AI 能力真正做进用户体验里的人</strong>。
-
           </h3>
 
-
-
           <p class="about-copy">
-
             在华科读研期间，我主导完成了 Gestar——一套利用 GNSS 卫星信号实现户外手势识别的端到端 AI 系统。
-
             这不是一个单点技术实验，而是一段完整的产品实践：从发现问题、验证需求、设计方案，到模型训练、App 开发和硬件集成，我几乎独立走完了产品从 0 到 1 的完整链路。
-
           </p>
 
-
-
           <p class="about-copy">
-
-            这段经历让我意识到：AI 产品经理真正稀缺的能力，不是"懂一点技术"，而是能在技术约束、业务目标与用户体验之间持续做高质量判断。
-
+            这段经历让我意识到：AI 产品经理真正稀缺的能力，不是“懂一点技术”，而是能在技术约束、业务目标与用户体验之间持续做高质量判断。
             我既能理解模型、数据、端侧推理这些底层约束，也能站在用户价值与商业可行性的角度，定义一个产品为什么值得被做。
-
           </p>
-
-
 
           <p class="about-copy">
-
             除了技术与产品，我还拥有较强的视觉表达能力与团队领导经验。兼职模特、院女篮队长、校队足球经历，让我在审美、表达、协作和抗压上，都形成了比同龄 PM 候选人更立体的优势。
-
           </p>
-
-
 
           <div class="tag-list">
-
             <span class="tag">AI 产品设计</span>
-
             <span class="tag">用户调研</span>
-
             <span class="tag">PRD / 系统设计文档</span>
-
             <span class="tag">PyTorch / TensorFlow</span>
-
             <span class="tag">LoRA / SFT</span>
-
             <span class="tag">Android 双平台开发</span>
-
             <span class="tag">模型量化与推理优化</span>
-
             <span class="tag">Prompt Engineering</span>
-
             <span class="tag">跨团队协作</span>
-
             <span class="tag">视觉表达与体验感知</span>
-
           </div>
-
         </div>
-
       </div>
-
     </div>
-
   </section>
-
-
 
   <!-- CASE -->
-
   <section class="section" id="gestar">
-
     <div class="container">
-
       <div class="section-header reveal-title">
-
         <div class="section-index">02</div>
-
         <div class="section-title-wrap">
-
           <h2>核心案例：Gestar</h2>
-
           <p class="section-subtitle">
-
-            不是"把技术做出来"而已，而是从用户场景出发，定义一套原本不存在的交互可能性。
-
+            不是“把技术做出来”而已，而是从用户场景出发，定义一套原本不存在的交互可能性。
           </p>
-
         </div>
-
       </div>
-
-
 
       <div class="case-hero">
-
         <div class="case-intro-card reveal-up">
-
           <span class="eyebrow">Case Study</span>
-
           <h3 class="case-intro-title">
-
             Gestar<em>:</em> 用卫星信号，<br>重新定义户外手势交互
-
           </h3>
-
           <p class="case-summary">
-
             户外环境中，摄像头受光照和遮挡影响，毫米波和 WiFi 方案又存在覆盖与部署限制。
-
-            我发现了这一"非接触交互的户外空白"，并提出使用 GNSS 卫星信号进行手势识别的全新方案，
-
+            我发现了这一“非接触交互的户外空白”，并提出使用 GNSS 卫星信号进行手势识别的全新方案，
             完成从需求定义、用户研究、技术路线设计，到轻量化模型与 Android 双平台 App 交付的全链路实践。
-
           </p>
-
-
 
           <div class="case-meta">
-
             <div class="case-meta-item">
-
               <span>角色</span>
-
               <strong>学生一作 / 全链路主导</strong>
-
             </div>
-
             <div class="case-meta-item">
-
               <span>论文</span>
-
               <strong>CCF-A 一作在投</strong>
-
             </div>
-
             <div class="case-meta-item">
-
               <span>周期</span>
-
               <strong>2024 — 2025</strong>
-
             </div>
-
             <div class="case-meta-item">
-
               <span>交付</span>
-
               <strong>Android Phone + Watch</strong>
-
             </div>
-
           </div>
-
         </div>
-
-
 
         <div class="case-business-card reveal-up" style="transition-delay:.08s;">
-
           <h3 class="business-title">它的价值，不只是一篇论文</h3>
-
           <p style="color:var(--ink-mid);">
-
             如果站在 AI 产品经理视角看，Gestar 的意义在于它验证了一个被低估的方向：
-
             <strong style="color:var(--ink);">在传统感知方案失效的场景里，仍然可能存在新的交互基础设施。</strong>
-
           </p>
-
           <ul class="business-list">
-
             <li><strong style="color:var(--ink);">场景价值：</strong>面向运动、户外作业、导航、无障碍辅助等高光照/高干扰环境，补足现有交互方案盲区。</li>
-
-            <li><strong style="color:var(--ink);">产品价值：</strong>用"无接触、免部署、全天候"的交互方式，为可穿戴设备与端侧 AI 打开新的体验入口。</li>
-
+            <li><strong style="color:var(--ink);">产品价值：</strong>用“无接触、免部署、全天候”的交互方式，为可穿戴设备与端侧 AI 打开新的体验入口。</li>
             <li><strong style="color:var(--ink);">商业潜力：</strong>可延展到车载、户外智能终端、特种作业、辅助出行等延迟敏感型场景。</li>
-
             <li><strong style="color:var(--ink);">PM 启发：</strong>真正的创新，不只是追随热点能力，而是识别用户需求和技术空白之间的新缝隙。</li>
-
           </ul>
-
         </div>
-
       </div>
-
-
 
       <div class="case-steps">
-
         <article class="case-step reveal-card">
-
           <div class="step-side">
-
             <div class="step-num">01</div>
-
             <div class="step-tag">问题发现</div>
-
           </div>
-
           <div class="step-content">
-
-            <h3 class="step-title">识别"户外交互"的空白地带</h3>
-
+            <h3 class="step-title">识别“户外交互”的空白地带</h3>
             <p>
-
               我不是先从技术出发，而是先从场景出发。现有手势识别大多依赖摄像头、雷达或局域信号，
-
               但在户外高光照、遮挡、移动中使用时，这些方案都存在明显限制。
-
-              我意识到，GNSS 卫星信号具备"天然覆盖、无需额外部署、不受近距离遮挡影响"的特征，
-
+              我意识到，GNSS 卫星信号具备“天然覆盖、无需额外部署、不受近距离遮挡影响”的特征，
               它可能成为一个此前没人认真做过的感知入口。
-
             </p>
-
             <div class="quote-box">
-
-              <p>对 PM 来说，最重要的不是"技术能不能做"，而是先判断"这个问题是不是真的存在，而且值不值得被重新定义"。</p>
-
+              <p>对 PM 来说，最重要的不是“技术能不能做”，而是先判断“这个问题是不是真的存在，而且值不值得被重新定义”。</p>
             </div>
-
           </div>
-
         </article>
-
-
 
         <article class="case-step reveal-card" style="transition-delay:.08s;">
-
           <div class="step-side">
-
             <div class="step-num">02</div>
-
             <div class="step-tag">用户研究</div>
-
           </div>
-
           <div class="step-content">
-
             <h3 class="step-title">33 位真实用户，验证需求不是伪命题</h3>
-
             <p>
-
-              为了确认这个方向不是"研究者自嗨"，我主导开展用户调研，招募 33+ 名真实用户，
-
+              为了确认这个方向不是“研究者自嗨”，我主导开展用户调研，招募 33+ 名真实用户，
               覆盖运动、户外作业、导航、无障碍辅助等 6 类典型使用场景。通过任务拆解与场景归纳，
-
-              我进一步定义出用户在什么情境下最需要"非接触、低延迟、不依赖视觉输入"的交互方式。
-
+              我进一步定义出用户在什么情境下最需要“非接触、低延迟、不依赖视觉输入”的交互方式。
             </p>
-
             <div class="metric-row">
-
               <div class="metric-pill"><strong>33+</strong>真实用户</div>
-
               <div class="metric-pill"><strong>6</strong>类户外场景</div>
-
               <div class="metric-pill"><strong>0→1</strong>需求验证闭环</div>
-
             </div>
-
           </div>
-
         </article>
-
-
 
         <article class="case-step reveal-card" style="transition-delay:.16s;">
-
           <div class="step-side">
-
             <div class="step-num">03</div>
-
             <div class="step-tag">方案设计</div>
-
           </div>
-
           <div class="step-content">
-
             <h3 class="step-title">把无结构信号，转成可学习的产品能力</h3>
-
             <p>
-
               最大难点在于 GNSS 原始信号并不是天然适合做手势识别的数据形态。
-
               我主导设计了 G-Map 表示法，将多颗卫星的接收信号映射为二维热力图，
-
               让稀疏、离散的时序信息变成 CNN 可学习的特征输入。
-
               这个过程本质上是在做一件 PM 常做的事：把抽象能力转换成可用结构。
-
             </p>
-
             <div class="quote-box">
-
               <p>真正好的方案设计，不是炫技，而是在技术约束里找到一个最能支撑用户价值的表达方式。</p>
-
             </div>
-
           </div>
-
         </article>
-
-
 
         <article class="case-step reveal-card" style="transition-delay:.24s;">
-
           <div class="step-side">
-
             <div class="step-num">04</div>
-
             <div class="step-tag">模型与工程</div>
-
           </div>
-
           <div class="step-content">
-
             <h3 class="step-title">轻量化模型 × 双平台 App × 可部署性闭环</h3>
-
             <p>
-
               我自研 CNN-LSTM + Attention 轻量化模型，结合深度可分卷积与滑动窗口注意力机制，
-
               在有限算力与内存约束下完成高精度实时推理。
-
               同时开发 Android 手机端与 Pixel Watch 2 手表端双平台 App，并集成商用硬件模块，
-
-              让项目真正具备"被用起来"的产品形态，而不是只停留在实验结果。
-
+              让项目真正具备“被用起来”的产品形态，而不是只停留在实验结果。
             </p>
-
             <div class="metric-row">
-
               <div class="metric-pill"><strong>96.43%</strong>识别准确率</div>
-
               <div class="metric-pill"><strong>5.81ms</strong>单次推理</div>
-
               <div class="metric-pill"><strong>45.92MB</strong>模型内存</div>
-
               <div class="metric-pill"><strong>25Hz</strong>实时频率</div>
-
             </div>
-
           </div>
-
         </article>
-
       </div>
-
     </div>
-
   </section>
 
-
-
   <!-- INSIGHTS -->
-
   <section class="section" id="insights">
-
     <div class="container">
-
       <div class="section-header reveal-title">
-
         <div class="section-index">03</div>
-
         <div class="section-title-wrap">
-
           <h2>产品洞察</h2>
-
           <p class="section-subtitle">
-
             我持续深度使用 ChatGPT、Claude、Gemini、Kimi、豆包、DeepSeek 等主流 AI 产品。
-
-            对我来说，使用它们不是"尝鲜"，而是一种持续的产品观察训练。
+            对我来说，使用它们不是“尝鲜”，而是一种持续的产品观察训练。
           </p>
         </div>
       </div>
@@ -4037,52 +1621,75 @@
           <div class="insight-tag">Agent 设计</div>
           <h3 class="insight-title">大多数 AI Agent，问题不在“不能做”，而在“不能被放心地使用”</h3>
           <p class="insight-body">
-            很多 Agent 产品失败，并不是模型能力不够，而是任务边界不清、中间过程不可见、失败不可回退。
-            我更关注“交付可靠感”的设计：哪些步骤应该自动化，哪些必须显式反馈。成熟的 Agent 应该是重新设计的人机协作界面。
+            很多 Agent 产品失败，并不是模型能力不够，而是任务边界不清、中间过程不可见、失败不可回退、用户对系统状态没有信任感。
+            真正成熟的 Agent 产品，关键在于重新设计人机协作界面：哪些步骤应该自动化，哪些步骤必须可确认，哪些状态必须显式反馈。
+            我更关注“交付可靠感”的设计，而不仅仅是“功能看起来很强”。
           </p>
         </article>
 
-        <article class="insight-item reveal-card">
+        <article class="insight-item reveal-card" style="transition-delay:.08s;">
           <div class="insight-tag">数据与模型</div>
           <h3 class="insight-title">从 Gestar 的稀疏数据问题，我更理解 AI 产品里的真实取舍</h3>
           <p class="insight-body">
-            在 Gestar 中，我通过 Diffusion-based 数据增强解决了训练样本不足的问题。这让我意识到：AI 产品最关键的决策常常不是“选哪个模型”，而是如何在数据质量、成本与交付速度之间做平衡。
+            在 Gestar 中，数据稀疏是第一性难题。我通过 Diffusion-based 数据增强和分布生成策略解决了训练样本不足的问题。
+            这让我更深刻地理解：AI 产品里最关键的决策，常常不是“选哪个模型”，而是如何在数据质量、成本、效果与交付速度之间做平衡。
+            这也是为什么我认为懂训练数据与评估逻辑的 PM，会比只会写流程的 PM 更有长期价值。
           </p>
         </article>
 
-        <article class="insight-item reveal-card">
+        <article class="insight-item reveal-card" style="transition-delay:.16s;">
           <div class="insight-tag">端侧 AI</div>
-          <h3 class="insight-title">端侧 AI 的机会，是重新定义“延迟敏感场景”</h3>
+          <h3 class="insight-title">端侧 AI 的机会，不是“更小的模型”，而是“重新定义延迟敏感场景”</h3>
           <p class="insight-body">
-            端侧 AI 不仅是云端的缩水版。当延迟、离线和隐私成为核心约束时，产品的交互形态会被重写。车载、可穿戴、实时运动反馈，是未来被显著低估的 AI 产品机会。
+            很多人把端侧 AI 理解为云端能力的缩水版，但我更愿意把它理解为另一套产品逻辑：
+            当延迟、离线、隐私、设备协同成为核心约束时，产品本身的交互形态也会被重写。
+            Gestar 的低延迟与双端交付经历让我相信，车载、可穿戴、实时辅助、运动反馈等场景，是未来被显著低估的 AI 产品机会。
           </p>
         </article>
       </div>
     </div>
   </section>
 
+  <!-- SKILLS -->
   <section class="section" id="skills">
     <div class="container">
       <div class="section-header reveal-title">
         <div class="section-index">04</div>
         <div class="section-title-wrap">
           <h2>技能矩阵</h2>
-          <p class="section-subtitle">我不把技术和产品看成平行线。对 AI PM 来说，它们共同决定判断质量。</p>
+          <p class="section-subtitle">
+            我不把技术能力和产品能力看成两条平行线。对 AI PM 来说，它们应该彼此校准、共同决定判断质量。
+          </p>
         </div>
       </div>
+
       <div class="skills-layout">
         <aside class="skills-note reveal-up">
           <span class="eyebrow">How I Work</span>
-          <p style="margin-top:18px;">我擅长把需求分析、技术可行性、设计与交付管理串成完整链路，能与算法团队说同一种语言。</p>
+          <p style="margin-top:18px;">
+            我擅长的不是某一个单点技能，而是把需求分析、技术可行性、产品设计、交付管理串成一条完整链路。
+          </p>
+          <p style="margin-top:14px;">
+            对 AI 产品岗位而言，这意味着我既能和算法、工程团队说同一种语言，也能把复杂能力翻译成用户愿意使用的体验。
+          </p>
         </aside>
-        <div class="skills-board reveal-up">
+
+        <div class="skills-board reveal-up" style="transition-delay:.08s;">
           <div class="skill-groups">
             <div>
               <div class="skill-group-title">AI / 机器学习</div>
               <div class="skill-list">
                 <div class="skill-item">
-                  <div class="skill-item-head"><span>PyTorch / 训练推理</span><span>90%</span></div>
+                  <div class="skill-item-head"><span>PyTorch / TensorFlow</span><span>90%</span></div>
                   <div class="skill-bar"><div class="skill-bar-fill" data-width="90%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-head"><span>LoRA / SFT 微调</span><span>78%</span></div>
+                  <div class="skill-bar"><div class="skill-bar-fill" data-width="78%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-head"><span>模型量化与推理优化</span><span>82%</span></div>
+                  <div class="skill-bar"><div class="skill-bar-fill" data-width="82%"></div></div>
                 </div>
                 <div class="skill-item">
                   <div class="skill-item-head"><span>Prompt Engineering</span><span>88%</span></div>
@@ -4090,15 +1697,68 @@
                 </div>
               </div>
             </div>
+
             <div>
-              <div class="skill-group-title">产品与综合能力</div>
+              <div class="skill-group-title">工程与开发</div>
               <div class="skill-list">
                 <div class="skill-item">
-                  <div class="skill-item-head"><span>需求分析 / 竞品研究</span><span>88%</span></div>
+                  <div class="skill-item-head"><span>Python</span><span>92%</span></div>
+                  <div class="skill-bar"><div class="skill-bar-fill" data-width="92%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-head"><span>Android / Kotlin</span><span>80%</span></div>
+                  <div class="skill-bar"><div class="skill-bar-fill" data-width="80%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-head"><span>MATLAB</span><span>76%</span></div>
+                  <div class="skill-bar"><div class="skill-bar-fill" data-width="76%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-head"><span>AI Coding 工具协作</span><span>90%</span></div>
+                  <div class="skill-bar"><div class="skill-bar-fill" data-width="90%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="skill-group-title">产品方法论</div>
+              <div class="skill-list">
+                <div class="skill-item">
+                  <div class="skill-item-head"><span>用户调研 / 需求分析</span><span>88%</span></div>
                   <div class="skill-bar"><div class="skill-bar-fill" data-width="88%"></div></div>
                 </div>
                 <div class="skill-item">
-                  <div class="skill-item-head"><span>审美感知 / 体验设计</span><span>90%</span></div>
+                  <div class="skill-item-head"><span>PRD / 系统方案文档</span><span>84%</span></div>
+                  <div class="skill-bar"><div class="skill-bar-fill" data-width="84%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-head"><span>竞品分析</span><span>80%</span></div>
+                  <div class="skill-bar"><div class="skill-bar-fill" data-width="80%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-head"><span>跨职能项目管理</span><span>83%</span></div>
+                  <div class="skill-bar"><div class="skill-bar-fill" data-width="83%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="skill-group-title">表达与综合素养</div>
+              <div class="skill-list">
+                <div class="skill-item">
+                  <div class="skill-item-head"><span>中文表达</span><span>100%</span></div>
+                  <div class="skill-bar"><div class="skill-bar-fill" data-width="100%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-head"><span>英文沟通</span><span>80%</span></div>
+                  <div class="skill-bar"><div class="skill-bar-fill" data-width="80%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-head"><span>公开表达 / 演讲</span><span>88%</span></div>
+                  <div class="skill-bar"><div class="skill-bar-fill" data-width="88%"></div></div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-item-head"><span>视觉审美 / 体验感知</span><span>90%</span></div>
                   <div class="skill-bar"><div class="skill-bar-fill" data-width="90%"></div></div>
                 </div>
               </div>
@@ -4109,114 +1769,214 @@
     </div>
   </section>
 
+  <!-- MULTIDIMENSIONAL -->
   <section class="section" id="multidimensional-perspective">
     <div class="container">
       <div class="section-header reveal-title">
         <div class="section-index">05</div>
         <div class="section-title-wrap">
           <h2>立体视角</h2>
-          <p class="section-subtitle">好的产品人，往往不只是“会做产品”。真正有判断力的人，通常都有不止一种看世界的方式。</p>
+          <p class="section-subtitle">好的产品人，往往不只是「会做产品」。真正有判断力的人，通常都有不止一种看世界的方式。</p>
         </div>
       </div>
+
+      <p class="multi-lead reveal-up">
+        这些经历看似与 AI 产品经理无关，但它们共同塑造了我的判断方式：如何在高压下做决定，如何理解团队协同，如何感知体验细节，如何站在陌生用户的角度重新理解一个问题。
+      </p>
 
       <div class="multi-grid">
         <div class="grid-item reveal-card">
-          <div class="image-container"><img src="assets/images/basketball.jpg" alt="篮球"></div>
-          <div class="grid-kicker">Leadership</div>
-          <h3>篮球 · 高压决策</h3>
-          <p>作为院女篮队长，比赛中的快速判断，对应产品推进中的关键取舍。</p>
-        </div>
-        <div class="grid-item reveal-card">
-          <div class="image-container"><img src="assets/images/football.jpg" alt="足球"></div>
-          <div class="grid-kicker">System</div>
-          <h3>足球 · 体系思维</h3>
-          <p>校队首发经历，让我理解 11 人协作中“局部动作”如何服务整体战术。</p>
-        </div>
-        <div class="grid-item reveal-card">
-          <div class="image-container"><img src="assets/images/travel.jpg" alt="旅行"></div>
-          <div class="grid-kicker">Observation</div>
-          <h3>旅行 · 敏锐度</h3>
-          <p>足迹遍布 20+ 城市。陌生环境中的不适感，让我更理解用户首次使用产品的困惑。</p>
-        </div>
-        <div class="grid-item reveal-card">
-          <div class="image-container"><img src="assets/images/model.jpg" alt="模特"></div>
-          <div class="grid-kicker">Aesthetics</div>
-          <h3>模特 · 审美表达</h3>
-          <p>百余套造型拍摄经历。审美直觉让我对 UI/UX 细节更敏感，更追求极致完成度。</p>
-        </div>
-      </div>
-
-      <div class="multi-alt-grid">
-        <div class="alt-card card-event reveal-up" style="grid-column: span 2;">
-          <span class="alt-card-kicker">Execution / 交付能力</span>
-          <h3 class="alt-card-title">活动策划 · 复杂项目管理</h3>
-          <p class="alt-card-desc">独立统筹学术会议。AI 产品落地同样需要这种对复杂链路的掌控：需求拆解 → 多方协同 → 现场反馈。</p>
-          <div class="event-steps" style="display:flex; gap:10px; margin-top:15px;">
-            <div style="flex:1; padding:10px; background:var(--bg-soft); border-radius:12px; font-size:12px; text-align:center;">需求调研</div>
-            <div style="flex:1; padding:10px; background:var(--bg-soft); border-radius:12px; font-size:12px; text-align:center;">资源整合</div>
-            <div style="flex:1; padding:10px; background:var(--bg-soft); border-radius:12px; font-size:12px; text-align:center;">交付监控</div>
+          <div class="image-container">
+            <img src="assets/images/basketball.jpg" alt="篮球">
+          </div>
+          <div class="grid-kicker">Leadership / Decision</div>
+          <h3>篮球 · 高压下的决策力</h3>
+          <p>作为院女篮队长，率队夺得“华工杯”冠军，也参与高强度正式赛事。</p>
+          <div class="insight-box">
+            <strong>这对 AI 产品的启发：</strong>
+            <ul>
+              <li>比赛中的快速判断，对应产品推进中的关键取舍能力。</li>
+              <li>团队角色分工，映射到跨职能协作里的节奏管理。</li>
+              <li>逆风局的韧性，帮助我面对产品迭代中的不确定性。</li>
+            </ul>
           </div>
         </div>
 
-        <div class="alt-card reveal-up" style="text-align: center;">
-          <span class="alt-card-kicker">Logic</span>
-          <h3 class="alt-card-title">结构化思考</h3>
-          <div style="margin:20px auto; width:80px; height:80px; border:2px dashed var(--accent); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; color:var(--accent);">验证循环</div>
-          <p class="alt-card-desc" style="font-size:13px;">擅长把模糊问题转成可验证的数学模型。</p>
-        </div>
-
-        <div class="alt-card reveal-up">
-          <span class="alt-card-kicker">Passion</span>
-          <h3 class="alt-card-title">产品 Feed</h3>
-          <div style="display:grid; gap:8px; margin-top:12px;">
-            <div style="padding:6px 12px; background:var(--bg-soft); border-radius:8px; font-size:12px; display:flex; justify-content:space-between;"><span>DeepSeek-V3</span><span style="color:var(--accent);">●</span></div>
-            <div style="padding:6px 12px; background:var(--bg-soft); border-radius:8px; font-size:12px; display:flex; justify-content:space-between;"><span>Claude Artif.</span><span style="color:var(--accent);">●</span></div>
-            <div style="padding:6px 12px; background:var(--bg-soft); border-radius:8px; font-size:12px; display:flex; justify-content:space-between;"><span>NotebookLM</span><span style="color:var(--accent);">●</span></div>
+        <div class="grid-item reveal-card" style="transition-delay:.06s;">
+          <div class="image-container">
+            <img src="assets/images/football.jpg" alt="足球">
+          </div>
+          <div class="grid-kicker">System Thinking</div>
+          <h3>足球 · 系统性思维</h3>
+          <p>校队与院队首发，参与长期体系化训练与比赛，理解“局部动作”如何服务整体战术。</p>
+          <div class="insight-box">
+            <strong>这对 AI 产品的启发：</strong>
+            <ul>
+              <li>足球的 11 人协作，让我更能理解复杂系统中的联动关系。</li>
+              <li>战术执行力，转化为产品落地中的项目推进能力。</li>
+              <li>长期训练的持续投入，很像 AI 产品从 0→1 的建设周期。</li>
+            </ul>
           </div>
         </div>
 
-        <div class="alt-card reveal-up">
-          <span class="alt-card-kicker">Collaboration</span>
-          <h3 class="alt-card-title">团队连接者</h3>
-          <p class="alt-card-desc">在算法工程师与用户之间充当最精准的“翻译官”与“助推器”。</p>
-          <div style="margin-top:12px; font-size:18px;">🌉 🔄 🚀</div>
+        <div class="grid-item reveal-card" style="transition-delay:.12s;">
+          <div class="image-container">
+            <img src="assets/images/travel.jpg" alt="旅行">
+          </div>
+          <div class="grid-kicker">Empathy / Observation</div>
+          <h3>旅行 · 用户视角的敏锐度</h3>
+          <p>足迹遍布 20+ 城市，我喜欢把自己放进陌生环境里，观察细节与差异。</p>
+          <div class="insight-box">
+            <strong>这对 AI 产品的启发：</strong>
+            <ul>
+              <li>陌生环境中的不适感，让我更理解首次使用产品时的困惑。</li>
+              <li>多元城市经验，帮助我理解不同用户群体的行为差异。</li>
+              <li>记录与分享习惯，也强化了我的洞察表达能力。</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="alt-card card-manifesto reveal-up" style="grid-column: span 4; background:var(--deep); color:var(--white); padding:40px; border:none;">
-          <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:30px;">
-            <div>
-              <h4 style="color:var(--accent-2); font-family:var(--serif); font-size:24px; margin-bottom:10px;">技术深度</h4>
-              <p style="font-size:14px; opacity:0.8;">我不是在“理解”技术，我曾真正从 0 到 1 做出过系统。</p>
-            </div>
-            <div>
-              <h4 style="color:var(--accent-2); font-family:var(--serif); font-size:24px; margin-bottom:10px;">产品思维</h4>
-              <p style="font-size:14px; opacity:0.8;">深挖用户场景中的真实交互缝隙，而非追随热点。</p>
-            </div>
-            <div>
-              <h4 style="color:var(--accent-2); font-family:var(--serif); font-size:24px; margin-bottom:10px;">审美素养</h4>
-              <p style="font-size:14px; opacity:0.8;">理解感知层的体验差异，确保产品具备打动人心的完成度。</p>
-            </div>
+        <div class="grid-item reveal-card" style="transition-delay:.18s;">
+          <div class="image-container">
+            <img src="assets/images/model.jpg" alt="模特">
+          </div>
+          <div class="grid-kicker">Aesthetics / Communication</div>
+          <h3>模特 · 审美与体验</h3>
+          <p>兼职拍摄百余套造型，从镜头、构图、风格与表达中理解“被感知”的重要性。</p>
+          <div class="insight-box">
+            <strong>这对 AI 产品的启发：</strong>
+            <ul>
+              <li>审美直觉让我对 UI/UX 细节更敏感。</li>
+              <li>镜头前表达能力，帮助我更好地做方案阐述和产品演示。</li>
+              <li>对细节的极致打磨，映射到产品体验中的完成度追求。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-item reveal-card story-card" style="transition-delay:.24s;">
+          <div class="image-container">
+            <img src="【请替换为学术会议/活动组织照片URL】" alt="活动组织">
+          </div>
+          <div class="grid-kicker">Execution / Delivery</div>
+          <h3>活动策划 · 0→1 的交付能力</h3>
+          <p>独立负责学术会议全流程策划，从议程、物料到现场体验，把复杂事情做到有秩序。</p>
+          <div class="insight-box">
+            <strong>这对 AI 产品的启发：</strong>
+            <ul>
+              <li>复杂项目拆解能力，直接迁移到产品项目管理。</li>
+              <li>多方协调经验，有利于算法、设计、研发之间的沟通。</li>
+              <li>对“交付体验”的重视，让我不仅关注功能，也关注过程。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-item reveal-card" style="transition-delay:.30s;">
+          <div class="image-container">
+            <img src="【请替换为校园/学习场景照片URL】" alt="学习场景">
+          </div>
+          <div class="grid-kicker">Academic Base</div>
+          <h3>科研训练 · 结构化思考</h3>
+          <p>从通信工程到电子信息硕士，系统训练了我拆解问题、建立假设、验证结论的能力。</p>
+          <div class="insight-box">
+            <strong>这对 AI 产品的启发：</strong>
+            <ul>
+              <li>更擅长把模糊问题转成可验证的问题。</li>
+              <li>对技术边界更敏感，能判断“能做”和“该做”的区别。</li>
+              <li>在复杂信息中提炼结构，是我做产品方案的重要底层能力。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-item reveal-card" style="transition-delay:.36s;">
+          <div class="image-container">
+            <img src="【请替换为日常生活/咖啡馆/阅读照片URL】" alt="阅读与思考">
+          </div>
+          <div class="grid-kicker">Reflection</div>
+          <h3>持续输入 · 保持判断更新</h3>
+          <p>我习惯长期观察 AI 产品、记录感受与差异，把“使用体验”转化为“产品判断”。</p>
+          <div class="insight-box">
+            <strong>这对 AI 产品的启发：</strong>
+            <ul>
+              <li>不是只追热点，而是持续建立自己的产品判断框架。</li>
+              <li>愿意长时间观察用户体验中的微小变化。</li>
+              <li>在信息密度高的领域里保持清晰感知。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-item reveal-card" style="transition-delay:.42s;">
+          <div class="image-container">
+            <img src="【请替换为团队合照URL】" alt="团队协作">
+          </div>
+          <div class="grid-kicker">Collaboration</div>
+          <h3>团队角色 · 既能带队，也能补位</h3>
+          <p>无论是比赛、项目还是活动，我都习惯在关键时刻承担“连接者”和“推进者”的角色。</p>
+          <div class="insight-box">
+            <strong>这对 AI 产品的启发：</strong>
+            <ul>
+              <li>知道什么时候推动，什么时候倾听，什么时候协调。</li>
+              <li>能在多角色之间建立共识，减少沟通损耗。</li>
+              <li>愿意对结果负责，而不只是完成分内任务。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid-item reveal-card story-card" style="transition-delay:.48s;">
+          <div class="image-container">
+            <img src="【请替换为个人形象照URL】" alt="个人形象">
+          </div>
+          <div class="grid-kicker">Why Me</div>
+          <h3>我的人设，不是一句标签</h3>
+          <p>我想呈现的不是“一个会做产品的学生”，而是一个未来能承担复杂 AI 产品判断的人。</p>
+          <div class="insight-box">
+            <strong>我希望你记住的，是这三个关键词：</strong>
+            <ul>
+              <li>技术深度：我真的做过系统。</li>
+              <li>产品思维：我知道为什么做、为谁做、值不值得做。</li>
+              <li>审美素养：我理解“被用户感知”的体验差异。</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section class="section" id="contact">
     <div class="container">
       <div class="contact-grid">
         <div class="contact-main reveal-up">
           <span class="eyebrow" style="color:rgba(255,255,255,.55);">Let’s Connect</span>
           <h2 class="contact-title">一起做真正<br><em>有价值的</em><br>AI 产品</h2>
+          <p class="contact-desc">
+            目前正在寻找 AI 产品经理 / AI 产品运营 / AI 相关实习与校招机会。  
+            如果你正在寻找一个既懂技术、又有产品判断力，同时具备表达与体验感知能力的人，欢迎联系我。
+          </p>
+
           <div class="contact-actions">
             <a class="contact-btn primary" href="mailto:2671618669@qq.com">发送邮件</a>
-            <a class="contact-btn ghost" href="#">下载简历</a>
+            <a class="contact-btn ghost" href="孙嘉仪-aipm-v3.docx" target="_blank">下载简历</a>
           </div>
         </div>
-        <div class="contact-side reveal-up">
+
+        <div class="contact-side reveal-up" style="transition-delay:.08s;">
           <div class="contact-list">
-            <div class="contact-item"><div class="contact-item-label">邮箱</div><div class="contact-item-value">2671618669@qq.com</div></div>
-            <div class="contact-item"><div class="contact-item-label">电话</div><div class="contact-item-value">189 6398 8667</div></div>
+            <a class="contact-item" href="mailto:2671618669@qq.com">
+              <div class="contact-item-label">邮箱</div>
+              <div class="contact-item-value">2671618669@qq.com</div>
+            </a>
+            <a class="contact-item" href="tel:18963988667">
+              <div class="contact-item-label">电话</div>
+              <div class="contact-item-value">189 6398 8667</div>
+            </a>
+            <div class="contact-item">
+              <div class="contact-item-label">所在地</div>
+              <div class="contact-item-value">武汉 · 华中科技大学</div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-label">求职方向</div>
+              <div class="contact-item-value">AI 产品经理 / AI 产品运营 / 智能交互相关岗位</div>
+            </div>
           </div>
         </div>
       </div>
@@ -4230,66 +1990,134 @@
     </div>
   </footer>
 
-  <button class="back-to-top" id="backToTop">↑</button>
+  <button class="back-to-top" id="backToTop" aria-label="回到顶部">↑</button>
 
   <script>
-    // 基础导航功能
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 24);
-      document.getElementById('backToTop').classList.toggle('show', window.scrollY > 500);
+    // mobile nav
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle?.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
     });
 
-    document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('show'));
+    });
 
-    // 动画露出
+    // navbar scrolled effect
+    const navbar = document.getElementById('navbar');
+    const handleNavbar = () => {
+      if (window.scrollY > 24) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    };
+    handleNavbar();
+    window.addEventListener('scroll', handleNavbar);
+
+    // reveal animations
+    const revealEls = document.querySelectorAll('.reveal-title, .reveal-up, .reveal-card');
     const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
+          if (entry.target.classList.contains('reveal-card')) {
+            const siblings = entry.target.parentElement?.children || [];
+            const order = Array.from(siblings).indexOf(entry.target);
+            entry.target.style.transitionDelay = `${order * 0.1}s`;
+          }
           entry.target.classList.add('revealed');
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.12 });
 
-    document.querySelectorAll('.reveal-title, .reveal-up, .reveal-card').forEach(el => revealObserver.observe(el));
+    revealEls.forEach(el => revealObserver.observe(el));
 
-    // 数字滚动
+    // counter animation
+    const counters = document.querySelectorAll('.counter');
     const counterObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const target = parseFloat(el.dataset.target);
-          const decimals = parseInt(el.dataset.decimals || 0);
-          let count = 0;
-          const duration = 1500;
-          const step = (target / duration) * 16;
-          const timer = setInterval(() => {
-            count += step;
-            if (count >= target) {
-              el.innerHTML = target.toFixed(decimals) + el.querySelector('.unit').outerHTML;
-              clearInterval(timer);
-            } else {
-              el.innerHTML = count.toFixed(decimals) + el.querySelector('.unit').outerHTML;
-            }
-          }, 16);
-          counterObserver.unobserve(el);
-        }
-      });
-    }, { threshold: 0.5 });
-    document.querySelectorAll('.counter').forEach(c => counterObserver.observe(c));
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseFloat(el.dataset.target || '0');
+        const decimals = parseInt(el.dataset.decimals || '0', 10);
+        const unitEl = el.querySelector('.unit');
+        const unitHTML = unitEl ? unitEl.outerHTML : '';
 
-    // 技能条
+        const duration = 1400;
+        const startTime = performance.now();
+
+        const update = (now) => {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = target * eased;
+          const display = decimals > 0 ? value.toFixed(decimals) : Math.floor(value).toString();
+          el.innerHTML = `${display}${unitHTML}`;
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            const finalValue = decimals > 0 ? target.toFixed(decimals) : Math.floor(target).toString();
+            el.innerHTML = `${finalValue}${unitHTML}`;
+          }
+        };
+
+        requestAnimationFrame(update);
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.45 });
+
+    counters.forEach(counter => counterObserver.observe(counter));
+
+    // skill bars
+    const skillSection = document.getElementById('skills');
+    const skillBars = document.querySelectorAll('.skill-bar-fill');
     const skillObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          document.querySelectorAll('.skill-bar-fill').forEach(bar => {
-            bar.style.width = bar.dataset.width;
+          skillBars.forEach((bar, i) => {
+            const width = bar.dataset.width || '0%';
+            setTimeout(() => {
+              bar.style.width = width;
+            }, i * 80);
           });
+          skillObserver.unobserve(skillSection);
         }
       });
     }, { threshold: 0.2 });
-    skillObserver.observe(document.getElementById('skills'));
+
+    if (skillSection) skillObserver.observe(skillSection);
+
+    // active nav highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+    const activeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navAnchors.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+          });
+        }
+      });
+    }, {
+      rootMargin: '-35% 0px -50% 0px',
+      threshold: 0
+    });
+
+    sections.forEach(section => activeObserver.observe(section));
+
+    // back to top
+    const backToTop = document.getElementById('backToTop');
+    const handleBackTop = () => {
+      if (window.scrollY > 500) backToTop.classList.add('show');
+      else backToTop.classList.remove('show');
+    };
+    handleBackTop();
+    window.addEventListener('scroll', handleBackTop);
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>
