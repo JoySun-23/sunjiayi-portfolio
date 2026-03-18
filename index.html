@@ -33,6 +33,19 @@
       --serif: "Cormorant Garamond", "Noto Serif SC", serif;
       --sans: "Outfit", "PingFang SC", "Microsoft YaHei", sans-serif;
     }
+    /* 固定头像 */
+    .avatar {
+      position: fixed;
+      top: 20px;  /* 头像与顶部的间距 */
+      left: 20px; /* 头像与左侧的间距 */
+      width: 120px;       /* 你可以根据头像大小自定义 */
+      height: auto;       /* 保持比例 */
+      object-fit: cover; /* 保持图像比例填充头像框 */
+      border-radius: 12px; /* 可选，给头像添加圆角 */
+      z-index: 999;
+      box-shadow: 0 0 8px rgba(0,0,0,0.15); /* 确保头像位于其他元素之上 */
+    }
+
 
     body {
       background:
@@ -213,29 +226,6 @@
     }
 
     /* HERO */
-    .hero-avatar-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .hero-avatar {
-      width: 240px;
-      height: 320px;
-      border-radius: 28px;
-      overflow: hidden;
-      border: 1px solid rgba(17,17,17,0.10);
-      box-shadow: var(--shadow-hover);
-      background: var(--bg-soft);
-    }
-
-    .hero-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-    }
     #hero {
       padding-top: 120px;
       padding-bottom: 56px;
@@ -245,17 +235,11 @@
       border-bottom: 1px solid var(--line);
     }
 
-    /* .hero-grid {
+    .hero-grid {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       gap: 40px;
       align-items: end;
-    } */
-     .hero-grid {
-      display: grid;
-      grid-template-columns: 280px 1.2fr 0.8fr;
-      gap: 40px;
-      align-items: center;
     }
 
     .hero-left {
@@ -1192,9 +1176,6 @@
 
     @media (max-width: 820px) {
       .nav-toggle { display: inline-flex; }
-      .hero-avatar-col {
-        display: none;
-      }
 
       .nav-links {
         position: absolute;
@@ -1269,7 +1250,7 @@
   </style>
 </head>
 <body>
-
+<img src="assets/images/avatar.jpg" alt="头像" class="avatar" />
   <!-- NAV -->
   <header class="navbar" id="navbar">
     <div class="container nav-inner">
@@ -1296,11 +1277,6 @@
   <section id="hero">
     <div class="container">
       <div class="hero-grid">
-        <div class="hero-avatar-col reveal-up">
-          <div class="hero-avatar">
-            <img src="assets/images/avatar.jpg" alt="孙嘉仪">
-          </div>
-        </div>
         <div class="hero-left">
           <div class="hero-meta reveal-up">
             <span class="hero-badge">华中科技大学 · 电子信息硕士</span>
