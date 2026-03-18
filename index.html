@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>孙嘉仪 · AI 产品经理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* ─── Reset & Base ─── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #F8F6F2;
+    --bg-warm:   #F0EDE6;
+    --ink:       #111111;
+    --ink-mid:   #555550;
+    --ink-light: #999990;
+    --accent:    #C4694A;
+    --accent-light: #E8C4B8;
+    --rule:      #D8D4CC;
+    --serif:     'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
+    --sans:      'Outfit', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    --max:       1200px;
+    --pad:       clamp(1.5rem, 5vw, 5rem);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── Typography ─── */
+  .serif { font-family: var(--serif); }
+
+  h1, h2, h3 { font-family: var(--serif); font-weight: 300; line-height: 1.15; }
+
+  p { color: var(--ink-mid); }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ─── Utilities ─── */
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+
+  .rule { width: 100%; height: 1px; background: var(--rule); border: none; }
+
+  .label {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+
+  .accent { color: var(--accent); }
+
+  /* ─── Fade-in on scroll ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.75s ease, transform 0.75s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── Nav ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(248,246,242,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+  }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--ink-mid);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.4rem 1.1rem;
+    border-radius: 2px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--accent); color: #fff; }
+
+  /* ─── Hero ─── */
+  #hero {
+    padding-top: 100px;
+    padding-bottom: 0;
+    overflow: hidden;
+  }
+  .hero-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.1s forwards;
+  }
+  .hero-meta .label { color: var(--ink-light); }
+  .hero-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--rule); }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(4.5rem, 11vw, 10rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.25s forwards;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-tagline {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: end;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.45s forwards;
+  }
+  .hero-tagline p {
+    font-family: var(--serif);
+    font-size: clamp(1.1rem, 2vw, 1.45rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink-mid);
+    line-height: 1.6;
+  }
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: flex-end;
+  }
+  .pill {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid var(--rule);
+    padding: 0.35rem 0.9rem;
+    border-radius: 2px;
+    color: var(--ink-mid);
+  }
+  .pill.filled { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+  .hero-rule {
+    margin-top: 4rem;
+    width: 100%;
+    height: 1px;
+    background: var(--rule);
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  /* ─── Stats bar ─── */
+  .stats-bar {
+    border-bottom: 1px solid var(--rule);
+    background: var(--bg);
+  }
+  .stats-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    divide: var(--rule);
+  }
+  .stat-item {
+    padding: 2rem 0;
+    border-right: 1px solid var(--rule);
+    padding-right: 2rem;
+    margin-right: 2rem;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-desc {
+    margin-top: 0.4rem;
+    font-size: 13px;
+    color: var(--ink-light);
+    line-height: 1.5;
+  }
+
+  /* ─── Section layout ─── */
+  section {
+    padding: clamp(4rem, 8vw, 8rem) 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-bottom: 4rem;
+  }
+  .section-num {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    padding-top: 0.2rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--ink);
+  }
+
+  /* ─── About ─── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 4rem;
+  }
+  .about-aside {}
+  .about-aside .label { display: block; margin-bottom: 1.2rem; }
+  .edu-item { margin-bottom: 1.5rem; }
+  .edu-school { font-size: 14px; font-weight: 500; color: var(--ink); }
+  .edu-detail { font-size: 13px; color: var(--ink-light); line-height: 1.6; }
+
+  .about-main {}
+  .about-lead {
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-bottom: 2rem;
+  }
+  .about-body { font-size: 16px; color: var(--ink-mid); line-height: 1.85; max-width: 65ch; }
+
+  .tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+  .tag {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--ink-mid);
+    background: var(--bg-warm);
+    border: 1px solid var(--rule);
+    padding: 0.3rem 0.8rem;
+    border-radius: 2px;
+  }
+
+  /* ─── Case Study (Gestar) ─── */
+  .case-intro {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 4rem;
+    margin-bottom: 5rem;
+  }
+  .case-label-col { padding-top: 0.4rem; }
+
+  .case-headline {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .case-headline em { font-style: italic; color: var(--accent); }
+
+  .case-summary { font-size: 16px; color: var(--ink-mid); max-width: 60ch; line-height: 1.85; }
+
+  .case-meta-row {
+    display: flex;
+    gap: 3rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  .case-meta-item {}
+  .case-meta-label { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); }
+  .case-meta-val { font-size: 14px; color: var(--ink); margin-top: 0.2rem; font-weight: 400; }
+
+  /* Steps */
+  .case-steps { display: flex; flex-direction: column; gap: 0; }
+
+  .case-step {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 4rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .case-step:last-child { border-bottom: none; }
+
+  .step-index {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .step-num {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--rule);
+    line-height: 1;
+  }
+  .step-label { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); }
+
+  .step-content {}
+  .step-title {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+  .step-body { font-size: 15px; color: var(--ink-mid); line-height: 1.85; max-width: 58ch; }
+
+  .pull-quote {
+    margin: 1.5rem 0;
+    padding: 1.2rem 1.5rem;
+    border-left: 2px solid var(--accent);
+    background: var(--bg-warm);
+  }
+  .pull-quote p {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  .metric-inline {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.3rem;
+    margin-top: 0.8rem;
+  }
+  .metric-num {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .metric-unit { font-size: 13px; color: var(--ink-light); }
+
+  .metrics-row { display: flex; gap: 3rem; margin-top: 1.5rem; flex-wrap: wrap; }
+
+  /* ─── AI Product Thinking ─── */
+  .thinking-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 4rem;
+  }
+  .thinking-main { display: flex; flex-direction: column; gap: 0; }
+
+  .thought-item {
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-start: start;
+  }
+  .thought-item:first-child { padding-top: 0; }
+  .thought-item:last-child { border-bottom: none; }
+  .thought-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  .thought-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+    line-height: 1.35;
+  }
+  .thought-body { font-size: 15px; color: var(--ink-mid); line-height: 1.8; max-width: 60ch; }
+  .thought-arrow {
+    font-size: 1.5rem;
+    color: var(--rule);
+    align-self: flex-start;
+    padding-top: 0.3rem;
+    transition: color 0.2s, transform 0.2s;
+  }
+  .thought-item:hover .thought-arrow { color: var(--accent); transform: translate(3px,-3px); }
+
+  /* ─── Skills ─── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 4rem;
+  }
+  .skills-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  .skill-group {}
+  .skill-group-title {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .skill-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .skill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: var(--ink-mid);
+  }
+  .skill-bar {
+    width: 80px;
+    height: 2px;
+    background: var(--rule);
+    border-radius: 1px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .skill-bar-fill {
+    height: 100%;
+    background: var(--ink);
+    border-radius: 1px;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.8s ease;
+  }
+  .skill-bar-fill.accent-bar { background: var(--accent); }
+  .skill-bar-fill.animated { transform: scaleX(1); }
+
+  /* ─── Multi-dimensional ─── */
+  .multi-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 4rem;
+  }
+  .multi-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .multi-card {
+    background: var(--bg-warm);
+    border: 1px solid var(--rule);
+    padding: 2rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .multi-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+  .multi-card:hover::before { transform: scaleX(1); }
+  .multi-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    display: block;
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .multi-card-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+  .multi-card-body { font-size: 13px; color: var(--ink-light); line-height: 1.7; }
+
+  /* ─── Contact ─── */
+  #contact {
+    background: var(--ink);
+    padding: clamp(4rem, 8vw, 8rem) 0;
+    border-bottom: none;
+  }
+  .contact-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .contact-headline {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300;
+    color: var(--bg);
+    line-height: 1.1;
+  }
+  .contact-headline em { font-style: italic; color: var(--accent-light); }
+  .contact-sub { margin-top: 1.5rem; font-size: 15px; color: #888; line-height: 1.8; }
+
+  .contact-links { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 1.5rem;
+    border: 1px solid #333;
+    color: var(--bg);
+    transition: border-color 0.2s, background 0.2s;
+    cursor: pointer;
+  }
+  .contact-link:hover { border-color: var(--accent-light); background: rgba(196,105,74,0.08); }
+  .contact-link-label { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .contact-link-val { font-family: var(--serif); font-size: 1rem; color: #aaa; }
+  .contact-link-arrow { color: #555; font-size: 1rem; transition: color 0.2s, transform 0.2s; }
+  .contact-link:hover .contact-link-arrow { color: var(--accent-light); transform: translate(3px,-3px); }
+
+  .resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background: var(--accent);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .resume-btn:hover { opacity: 0.85; }
+
+  /* ─── Footer ─── */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid #222;
+    padding: 2rem 0;
+  }
+  .footer-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-copy { font-size: 12px; color: #555; }
+  .footer-loc { font-size: 12px; color: #555; }
+
+  /* ─── Keyframes ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── Mobile ─── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero-tagline { grid-template-columns: 1fr; }
+    .hero-pills { justify-content: flex-start; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .stat-item:nth-child(2) { border-right: none; }
+    .section-header,
+    .about-grid,
+    .case-intro,
+    .case-step,
+    .thinking-grid,
+    .skills-grid,
+    .multi-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .multi-cards { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .skills-main { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">孙嘉仪 SJY</a>
+    <ul class="nav-links">
+      <li><a href="#about">关于</a></li>
+      <li><a href="#gestar">案例</a></li>
+      <li><a href="#thinking">产品洞察</a></li>
+      <li><a href="#skills">技能</a></li>
+      <li><a href="#contact">联系</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">联系我</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero" style="border-bottom: none; padding-bottom: 0;">
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span class="label">AI Product Manager</span>
+      <div class="hero-dot"></div>
+      <span class="label">华中科技大学 · 电子信息</span>
+      <div class="hero-dot"></div>
+      <span class="label">在读硕士</span>
+    </div>
+
+    <h1 class="hero-name">孙嘉仪<em>.</em></h1>
+
+    <div class="hero-tagline">
+      <p>技术深度 × 产品思维 × 审美素养<br>——做得出系统，也看得见用户的 AI PM</p>
+      <div class="hero-pills">
+        <span class="pill filled">CCF-A 一作论文</span>
+        <span class="pill">端到端 AI 系统</span>
+        <span class="pill">33+ 用户调研</span>
+        <span class="pill">Android 双平台</span>
+      </div>
+    </div>
+
+    <div class="hero-rule"></div>
+  </div>
+</section>
+
+<!-- ═══ STATS BAR ═══ -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num">96<span>.43%</span></div>
+      <div class="stat-desc">手势识别准确率<br>Gestar 系统核心指标</div>
+    </div>
+    <div class="stat-item reveal" style="transition-delay:0.1s">
+      <div class="stat-num">5<span>.81ms</span></div>
+      <div class="stat-desc">实时推理延迟<br>25Hz 连续推理</div>
+    </div>
+    <div class="stat-item reveal" style="transition-delay:0.2s">
+      <div class="stat-num">33<span>+</span></div>
+      <div class="stat-desc">真实用户调研数量<br>6 类户外使用场景</div>
+    </div>
+    <div class="stat-item reveal" style="transition-delay:0.3s">
+      <div class="stat-num">150<span>+</span></div>
+      <div class="stat-desc">学术会议策划规模<br>全流程 0 → 1 负责</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <div>
+        <div class="section-num">01</div>
+      </div>
+      <h2 class="section-title">关于我</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-aside reveal">
+        <span class="label">教育经历</span>
+        <div class="edu-item" style="margin-top: 1rem;">
+          <div class="edu-school">华中科技大学</div>
+          <div class="edu-detail">电子信息 · 硕士在读<br>2024.09 — 2027.06</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">华中科技大学</div>
+          <div class="edu-detail">通信工程 · 学士<br>2020.09 — 2024.06<br>GPA 3.42 / 4 · 校优秀毕业生</div>
+        </div>
+
+        <div style="margin-top: 2rem;">
+          <span class="label">荣誉</span>
+          <div class="edu-detail" style="margin-top:0.8rem; line-height:2;">
+            校三好学生<br>
+            校优秀学生干部<br>
+            学业优秀二等奖学金<br>
+            校文体优秀奖学金
+          </div>
+        </div>
+      </div>
+
+      <div class="about-main reveal" style="transition-delay:0.15s">
+        <p class="about-lead">
+          我是一个真正意义上做出过 AI 系统的产品人——从 0 定义需求、设计方案、写代码、上线硬件，
+          同时能用产品经理的语言把它讲清楚。
+        </p>
+        <p class="about-body">
+          在华科攻读电子信息硕士期间，我主导完成了 Gestar 项目——一套利用 GNSS 卫星信号实现户外手势识别的端到端 AI 系统，从用户调研到 Android 双平台 App 交付，全链路独立负责。这段经历让我深刻理解：好的 AI 产品，是技术约束与用户需求之间反复拉锯的结果。
+        </p>
+        <p class="about-body" style="margin-top: 1rem;">
+          与此同时，我是 ChatGPT、Claude、豆包等主流 AI 产品的重度用户，持续观察多模态、Agent、RAG 等方向在产品层面的落地方式。我相信，能跑通模型、也能理解用户的 PM，才是 AI 时代最需要的人。
+        </p>
+
+        <div class="tag-row">
+          <span class="tag">PyTorch · TensorFlow</span>
+          <span class="tag">LoRA / SFT 微调</span>
+          <span class="tag">Android 开发</span>
+          <span class="tag">Prompt Engineering</span>
+          <span class="tag">用户调研</span>
+          <span class="tag">PRD 写作</span>
+          <span class="tag">竞品分析</span>
+          <span class="tag">模型量化推理</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CASE STUDY: GESTAR ═══ -->
+<section id="gestar" style="background: var(--bg-warm);">
+  <div class="container">
+
+    <div class="case-intro">
+      <div class="case-label-col reveal">
+        <div class="section-num">02</div>
+        <div class="label" style="margin-top:0.5rem;">核心案例</div>
+      </div>
+      <div class="reveal" style="transition-delay:0.1s">
+        <h2 class="case-headline">
+          Gestar<em>:</em><br>用卫星信号<br>重新定义手势交互
+        </h2>
+        <p class="case-summary">
+          户外场景下，摄像头和毫米波雷达失效——我发现了这个感知盲区，
+          并提出将 GNSS 卫星信号用于手势识别这一全新方案。
+          从 0 到 1，完成用户研究、系统设计、模型训练、App 开发与硬件集成全链路。
+        </p>
+        <div class="case-meta-row">
+          <div class="case-meta-item">
+            <div class="case-meta-label">角色</div>
+            <div class="case-meta-val">学生一作 · 全栈负责</div>
+          </div>
+          <div class="case-meta-item">
+            <div class="case-meta-label">发表</div>
+            <div class="case-meta-val">IEEE TMC（CCF-A · 中科院1区）</div>
+          </div>
+          <div class="case-meta-item">
+            <div class="case-meta-label">周期</div>
+            <div class="case-meta-val">2024 — 2025</div>
+          </div>
+          <div class="case-meta-item">
+            <div class="case-meta-label">平台</div>
+            <div class="case-meta-val">Android Phone + Pixel Watch 2</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-steps">
+
+      <!-- Step 1 -->
+      <div class="case-step reveal">
+        <div class="step-index">
+          <div class="step-num">01</div>
+          <div class="step-label">问题发现</div>
+        </div>
+        <div class="step-content">
+          <h3 class="step-title">识别户外感知的空白地带</h3>
+          <p class="step-body">
+            现有手势识别方案——摄像头、毫米波雷达、WiFi 信号——在户外环境中均面临光线干扰、遮挡或覆盖受限的问题。
+            我注意到 GNSS 卫星信号无处不在、不受遮挡、免布施，是一个被完全忽视的感知层。
+          </p>
+          <div class="pull-quote">
+            <p>这不是一个改进现有方案的项目，而是一个从 0 定义新应用场景的机会——户外非接触感知的空白，在我看来是一个真实存在的产品需求。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="case-step reveal">
+        <div class="step-index">
+          <div class="step-num">02</div>
+          <div class="step-label">用户研究</div>
+        </div>
+        <div class="step-content">
+          <h3 class="step-title">33 位用户 · 6 类场景的实地验证</h3>
+          <p class="step-body">
+            为验证户外手势识别的真实需求，我主导了大规模实地用户研究，招募 33+ 名真实用户，
+            覆盖运动、户外作业、导航、无障碍辅助等 6 类典型场景，
+            系统性地定义了用户角色与使用动机，确保产品方向的需求真实性。
+          </p>
+          <div class="metrics-row">
+            <div>
+              <div class="metric-inline">
+                <span class="metric-num">33</span>
+                <span class="metric-unit">+ 用户</span>
+              </div>
+              <div style="font-size:12px;color:var(--ink-light);margin-top:0.3rem;">真实招募调研</div>
+            </div>
+            <div>
+              <div class="metric-inline">
+                <span class="metric-num">6</span>
+                <span class="metric-unit">类场景</span>
+              </div>
+              <div style="font-size:12px;color:var(--ink-light);margin-top:0.3rem;">系统性户外场景</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="case-step reveal">
+        <div class="step-index">
+          <div class="step-num">03</div>
+          <div class="step-label">方案设计</div>
+        </div>
+        <div class="step-content">
+          <h3 class="step-title">G-Map 表示法：将卫星信号变成可学习的特征</h3>
+          <p class="step-body">
+            核心技术方案由我主导设计：将多颗卫星的接收信号强度映射为二维热力图（G-Map），
+            使无结构的 GNSS 时序数据变为 CNN 可学习的图像特征。
+            这个设计决策直接决定了系统的可行性——是从产品约束出发，反推技术实现路径的典型案例。
+          </p>
+          <div class="pull-quote">
+            <p>数据稀疏是我们面临的最大挑战。我引入 Diffusion-based 增强与 KDE 分布生成策略，将标注成本降低的同时，把准确率推到了 96.43%。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="case-step reveal">
+        <div class="step-index">
+          <div class="step-num">04</div>
+          <div class="step-label">模型与工程</div>
+        </div>
+        <div class="step-content">
+          <h3 class="step-title">轻量化模型 × 双平台 App × 商用硬件</h3>
+          <p class="step-body">
+            自研 CNN-LSTM + Attention 轻量化模型（深度可分卷积 + 滑动窗口注意力），
+            在内存仅 45.92MB 的约束下实现高精度推理——这是产品可部署性倒逼的工程决策。
+            完成 Android 手机端与 Pixel Watch 2 手表端双平台 App 开发，集成 Ublox M9N 商用硬件模组。
+          </p>
+          <div class="metrics-row">
+            <div>
+              <div class="metric-inline">
+                <span class="metric-num">96.43</span>
+                <span class="metric-unit">%</span>
+              </div>
+              <div style="font-size:12px;color:var(--ink-light);margin-top:0.3rem;">识别准确率</div>
+            </div>
+            <div>
+              <div class="metric-inline">
+                <span class="metric-num">5.81</span>
+                <span class="metric-unit">ms</span>
+              </div>
+              <div style="font-size:12px;color:var(--ink-light);margin-top:0.3rem;">单次推理延迟</div>
+            </div>
+            <div>
+              <div class="metric-inline">
+                <span class="metric-num">45.92</span>
+                <span class="metric-unit">MB</span>
+              </div>
+              <div style="font-size:12px;color:var(--ink-light);margin-top:0.3rem;">模型内存占用</div>
+            </div>
+            <div>
+              <div class="metric-inline">
+                <span class="metric-num">25</span>
+                <span class="metric-unit">Hz</span>
+              </div>
+              <div style="font-size:12px;color:var(--ink-light);margin-top:0.3rem;">实时推理频率</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AI PRODUCT THINKING ═══ -->
+<section id="thinking">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <div>
+        <div class="section-num">03</div>
+      </div>
+      <h2 class="section-title">产品洞察</h2>
+    </div>
+
+    <div class="thinking-grid">
+      <div class="reveal">
+        <p style="font-size:14px;color:var(--ink-light);line-height:1.8;">
+          持续深度使用 ChatGPT、Claude、Gemini、Kimi、豆包、Deepseek 等主流 AI 产品，
+          不只是用户，也是观察者。
+        </p>
+      </div>
+      <div class="thinking-main reveal" style="transition-delay:0.1s">
+
+        <div class="thought-item">
+          <div>
+            <div class="thought-tag">Agent 产品设计</div>
+            <h3 class="thought-title">为什么大多数 AI Agent 都死在「最后一公里」</h3>
+            <p class="thought-body">
+              技术上能跑通的 Agent，在产品层面往往因为任务边界不清、中间状态不可见、
+              用户信任未建立而失败。真正好用的 Agent 产品需要重新设计人机协作界面，
+              而不是把 LLM 调用包装成一个按钮。Coze 和 Dify 的差异，本质是产品哲学的差异。
+            </p>
+          </div>
+          <span class="thought-arrow">↗</span>
+        </div>
+
+        <div class="thought-item">
+          <div>
+            <div class="thought-tag">模型能力 × 产品体验</div>
+            <h3 class="thought-title">从 Gestar 的稀疏数据问题，看大模型 SFT 的产品取舍</h3>
+            <p class="thought-body">
+              在 Gestar 项目中，我用 Diffusion-based 数据增强解决了标注稀疏问题。
+              这个思路在大模型 SFT/RLHF 场景下同样适用：数据质量 vs 数量的取舍，
+              是模型团队和产品团队之间最真实的张力。能理解这个张力的 PM，才能做出合理的产品决策。
+            </p>
+          </div>
+          <span class="thought-arrow">↗</span>
+        </div>
+
+        <div class="thought-item">
+          <div>
+            <div class="thought-tag">边缘推理 × 产品设计</div>
+            <h3 class="thought-title">端侧 AI 的产品机会：被低估的「延迟敏感型」场景</h3>
+            <p class="thought-body">
+              Gestar 的 5.81ms 推理延迟，是在 45.92MB 内存约束下实现的。
+              这段经历让我深刻理解：端侧模型的核心不是「小一点」，
+              而是如何在资源约束下重新定义产品的可行性边界。
+              手机、手表、车载，都是被严重低估的 AI 产品场景。
+            </p>
+          </div>
+          <span class="thought-arrow">↗</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SKILLS ═══ -->
+<section id="skills" style="background: var(--bg-warm);">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <div>
+        <div class="section-num">04</div>
+      </div>
+      <h2 class="section-title">技能矩阵</h2>
+    </div>
+
+    <div class="skills-grid">
+      <div class="reveal">
+        <p style="font-size:14px;color:var(--ink-light);line-height:1.8;">
+          技术能力 + 产品方法论，两者不是平行的，而是互相校准的。
+        </p>
+      </div>
+      <div class="skills-main reveal" style="transition-delay:0.1s">
+
+        <div class="skill-group">
+          <div class="skill-group-title">AI / 机器学习</div>
+          <ul class="skill-list">
+            <li class="skill-item">
+              <span>PyTorch / TensorFlow</span>
+              <div class="skill-bar"><div class="skill-bar-fill accent-bar" data-width="0.9"></div></div>
+            </li>
+            <li class="skill-item">
+              <span>模型微调 LoRA / SFT</span>
+              <div class="skill-bar"><div class="skill-bar-fill accent-bar" data-width="0.75"></div></div>
+            </li>
+            <li class="skill-item">
+              <span>模型量化与推理优化</span>
+              <div class="skill-bar"><div class="skill-bar-fill accent-bar" data-width="0.8"></div></div>
+            </li>
+            <li class="skill-item">
+              <span>Prompt Engineering</span>
+              <div class="skill-bar"><div class="skill-bar-fill accent-bar" data-width="0.85"></div></div>
+            </li>
+            <li class="skill-item">
+              <span>数据分析 / 可视化</span>
+              <div class="skill-bar"><div class="skill-bar-fill accent-bar" data-width="0.82"></div></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">工程与开发</div>
+          <ul class="skill-list">
+            <li class="skill-item">
+              <span>Python</span>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="0.92"></div></div>
+            </li>
+            <li class="skill-item">
+              <span>Android (Kotlin)</span>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="0.78"></div></div>
+            </li>
+            <li class="skill-item">
+              <span>MATLAB</span>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="0.75"></div></div>
+            </li>
+            <li class="skill-item">
+              <span>AI Coding 工具</span>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="0.88"></div></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">产品方法论</div>
+          <ul class="skill-list">
+            <li class="skill-item">
+              <span>用户调研 / 需求分析</span>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="0.85"></div></div>
+            </li>
+            <li class="skill-item">
+              <span>PRD / 系统设计文档</span>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="0.82"></div></div>
+            </li>
+            <li class="skill-item">
+              <span>竞品分析</span>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="0.78"></div></div>
+            </li>
+            <li class="skill-item">
+              <span>跨职能项目管理</span>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="0.8"></div></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">语言与沟通</div>
+          <ul class="skill-list">
+            <li class="skill-item">
+              <span>中文（母语）</span>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="1.0"></div></div>
+            </li>
+            <li class="skill-item">
+              <span>英文（六级 529）</span>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="0.8"></div></div>
+            </li>
+            <li class="skill-item">
+              <span>普通话（一级乙等）</span>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="0.95"></div></div>
+            </li>
+            <li class="skill-item">
+              <span>公众表达 / 演讲</span>
+              <div class="skill-bar"><div class="skill-bar-fill" data-width="0.88"></div></div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MULTI-DIMENSIONAL ═══ -->
+<section id="more">
+  <div class="container">
+
+    <div class="section-header reveal">
+      <div>
+        <div class="section-num">05</div>
+      </div>
+      <h2 class="section-title">立体视角</h2>
+    </div>
+
+    <div class="multi-grid">
+      <div class="reveal">
+        <p style="font-size:14px;color:var(--ink-light);line-height:1.8;">
+          好的产品人，往往不只是「会做产品」。
+        </p>
+      </div>
+      <div class="multi-cards reveal" style="transition-delay:0.1s">
+
+        <div class="multi-card">
+          <span class="multi-icon">审</span>
+          <h3 class="multi-card-title">兼职模特 · 审美直觉</h3>
+          <p class="multi-card-body">
+            拍摄百余套造型，培养了从视觉和体验维度看问题的能力。
+            AI 产品的 UI/UX 决策，我能从用户审美的角度提供不一样的判断。
+          </p>
+        </div>
+
+        <div class="multi-card">
+          <span class="multi-icon">冠</span>
+          <h3 class="multi-card-title">篮球冠军队长 · 高压决策</h3>
+          <p class="multi-card-body">
+            率院女篮夺得「华工杯」冠军，同时参与 CUBAL 湖北省赛。
+            赛场上的快速决策与团队管理，是最真实的高压环境训练。
+          </p>
+        </div>
+
+        <div class="multi-card">
+          <span class="multi-icon">会</span>
+          <h3 class="multi-card-title">学术会议策划 · 0 → 1 交付</h3>
+          <p class="multi-card-body">
+            独立负责 2024SSMC 学术会议全流程策划，150+ 人规模，
+            从议程设计、视觉物料、供应商对接到参会者体验管理，零投诉交付。
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact" style="padding: 0; border-bottom: none;">
+  <div class="contact-inner">
+    <div class="reveal">
+      <h2 class="contact-headline">
+        一起做<br><em>有意思的</em><br>AI 产品
+      </h2>
+      <p class="contact-sub">
+        目前正在寻找 AI 产品经理、AI 产品运营等相关实习 / 校招机会。<br>
+        如果你有有趣的岗位或想法，欢迎随时联系。
+      </p>
+      <button class="resume-btn" onclick="window.open('孙嘉仪-aipm-v3.docx')">
+        ↓ 下载简历
+      </button>
+    </div>
+
+    <div class="contact-links reveal" style="transition-delay:0.15s">
+      <div class="contact-link" onclick="window.location.href='mailto:2671618669@qq.com'">
+        <div>
+          <div class="contact-link-label">邮箱</div>
+          <div class="contact-link-val">2671618669@qq.com</div>
+        </div>
+        <span class="contact-link-arrow">↗</span>
+      </div>
+      <div class="contact-link" onclick="window.location.href='tel:18963988667'">
+        <div>
+          <div class="contact-link-label">电话</div>
+          <div class="contact-link-val">189 6398 8667</div>
+        </div>
+        <span class="contact-link-arrow">↗</span>
+      </div>
+      <div class="contact-link">
+        <div>
+          <div class="contact-link-label">所在地</div>
+          <div class="contact-link-val">武汉 · 华中科技大学</div>
+        </div>
+        <span class="contact-link-arrow">↗</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2025 孙嘉仪 · AI Product Manager</span>
+    <span class="footer-loc">武汉 · 华中科技大学</span>
+  </div>
+</footer>
+
+<script>
+  // ─── Scroll reveal ───
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Animate skill bars
+        entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
+          const w = bar.dataset.width;
+          bar.style.transform = `scaleX(${w})`;
+          bar.classList.add('animated');
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // ─── Nav active state ───
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.style.color = link.getAttribute('href') === '#' + entry.target.id
+            ? 'var(--accent)' : '';
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(s => navObserver.observe(s));
+
+  // ─── Smooth number animation for stats ───
+  function animateCount(el, target, suffix, duration = 1200) {
+    const start = performance.now();
+    const isFloat = target % 1 !== 0;
+    const update = (now) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const val = target * ease;
+      el.textContent = isFloat ? val.toFixed(2) : Math.floor(val);
+      if (progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  }
+
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const numEl = entry.target.querySelector('.stat-num');
+        if (!numEl) return;
+        const text = numEl.textContent;
+        const match = text.match(/[\d.]+/);
+        if (match) {
+          const num = parseFloat(match[0]);
+          const suffix = text.replace(match[0], '');
+          // Rebuild: find the non-span text
+          const spanEl = numEl.querySelector('span');
+          const spanText = spanEl ? spanEl.textContent : '';
+          const baseText = numEl.childNodes[0].textContent;
+          const baseNum = parseFloat(baseText);
+          if (!isNaN(baseNum)) {
+            animateCount(numEl.childNodes[0], baseNum, '');
+          }
+        }
+        statObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.stat-item').forEach(el => statObserver.observe(el));
+</script>
+</body>
+</html>
