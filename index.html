@@ -228,6 +228,7 @@
       gap: 40px;
       align-items: end;
     } */
+
      /* 修改 Hero 布局：让标题和头像并排 */
     .hero-grid {
       display: grid;
@@ -236,8 +237,10 @@
       align-items: center;
     }
 
+
     .hero-left {
-      position: relative;
+      position: relative;  /* 加上这一行 */
+      padding-top: 20px;
     }
 
     /* 重点：头像放大并绝对定位/弹性定位在名字旁边 */
@@ -1299,6 +1302,9 @@
     <div class="container">
       <div class="hero-grid">
         <div class="hero-left">
+          <div class="hero-avatar" style="border-radius: 50%; overflow: hidden;">
+            <img src="assets/images/avatar.jpg" alt="孙嘉仪">
+          </div>
           <div class="hero-meta reveal-up">
             <span class="hero-badge">华中科技大学 · 电子信息硕士</span>
             <span class="hero-badge">2027届</span>
