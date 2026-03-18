@@ -788,6 +788,86 @@
       vertical-align: middle;
     }
 
+        .case-demo {
+      margin-bottom: 28px;
+      padding: 30px;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.60);
+      border: 1px solid rgba(17,17,17,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .case-demo-head {
+      margin-bottom: 18px;
+    }
+
+    .case-demo-title {
+      margin-top: 14px;
+      font-family: var(--serif);
+      font-size: clamp(28px, 3vw, 42px);
+      line-height: 1.1;
+      font-weight: 500;
+    }
+
+    .case-demo-desc {
+      margin-top: 10px;
+      color: var(--ink-mid);
+      font-size: 15px;
+      max-width: 760px;
+    }
+
+    .case-demo-video-wrap {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(23,23,23,0.92), rgba(43,43,43,0.86));
+      border: 1px solid rgba(17,17,17,0.08);
+      min-height: 420px;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+    }
+
+    .case-demo-video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+      background: #111;
+    }
+
+    .case-demo-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(17,17,17,0.04), rgba(17,17,17,0.38));
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .case-demo-overlay span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.88);
+      backdrop-filter: blur(10px);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+    }
+
+    .case-demo-video-wrap:hover .case-demo-overlay {
+      opacity: 0.15;
+    }
+
+
     /* INSIGHTS */
     .insight-list {
       display: grid;
@@ -1034,6 +1114,116 @@
       color: rgba(255,255,255,0.78);
     }
 
+        .multi-horizontal {
+      display: grid;
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .h-card {
+      display: grid;
+      grid-template-columns: 72px 1.05fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+      padding: 24px 26px;
+      border-radius: 26px;
+      background: rgba(255,255,255,0.60);
+      border: 1px solid rgba(17,17,17,0.08);
+      box-shadow: var(--shadow);
+      transition:
+        transform 0.28s ease,
+        box-shadow 0.28s ease,
+        border-color 0.28s ease,
+        background 0.28s ease;
+    }
+
+    .h-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(201,108,74,0.24);
+      background: rgba(255,255,255,0.78);
+    }
+
+    .h-card-index {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 44px;
+      line-height: 1;
+      color: rgba(201,108,74,0.42);
+      padding-top: 2px;
+    }
+
+    .h-card-main h3 {
+      font-family: var(--serif);
+      font-size: 30px;
+      line-height: 1.12;
+      margin-bottom: 10px;
+    }
+
+    .h-card-main p {
+      color: var(--ink-mid);
+      font-size: 15px;
+      max-width: 520px;
+    }
+
+    .h-card-detail {
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(201,108,74,0.08), rgba(201,108,74,0.03));
+      border: 1px solid rgba(201,108,74,0.14);
+      transition: transform 0.28s ease, border-color 0.28s ease;
+    }
+
+    .h-card:hover .h-card-detail {
+      transform: translateX(4px);
+      border-color: rgba(201,108,74,0.22);
+    }
+
+    .h-card-detail strong {
+      display: block;
+      font-size: 13px;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .h-card-detail ul {
+      display: grid;
+      gap: 8px;
+      padding-left: 18px;
+      list-style: disc;
+    }
+
+    .h-card-detail li {
+      color: var(--ink-mid);
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .h-card.story-card {
+      background: linear-gradient(135deg, rgba(23,23,23,0.96), rgba(43,43,43,0.92));
+      color: var(--white);
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .h-card.story-card .grid-kicker,
+    .h-card.story-card .h-card-main p,
+    .h-card.story-card .h-card-detail li {
+      color: rgba(255,255,255,0.76);
+    }
+
+    .h-card.story-card .h-card-main h3,
+    .h-card.story-card .h-card-detail strong {
+      color: var(--white);
+    }
+
+    .h-card.story-card .h-card-detail {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.10);
+    }
+
+
     /* CONTACT */
     #contact {
       background: linear-gradient(135deg, #151515, #1c1c1c);
@@ -1236,6 +1426,14 @@
       .skills-layout {
         grid-template-columns: 1fr;
       }
+      .h-card {
+        grid-template-columns: 56px 1fr;
+      }
+
+      .h-card-detail {
+        grid-column: 1 / -1;
+      }
+
 
       .case-meta {
         grid-template-columns: repeat(2, 1fr);
@@ -1261,6 +1459,20 @@
 
     @media (max-width: 820px) {
       .nav-toggle { display: inline-flex; }
+      .h-card {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 22px;
+      }
+
+      .h-card-index {
+        justify-content: flex-start;
+        font-size: 36px;
+      }
+
+      .h-card-main h3 {
+        font-size: 26px;
+      }
 
       .nav-links {
         position: absolute;
@@ -1594,6 +1806,34 @@
           </ul>
         </div>
       </div>
+            <div class="case-demo reveal-up">
+        <div class="case-demo-head">
+          <span class="eyebrow">Product Demo</span>
+          <h3 class="case-demo-title">Gestar Demo 视频</h3>
+          <p class="case-demo-desc">
+            这里放置 Gestar 的演示视频。鼠标移动到视频区域时自动循环播放，移出后暂停。
+          </p>
+        </div>
+
+        <div class="case-demo-video-wrap">
+          <video
+            class="case-demo-video"
+            muted
+            playsinline
+            loop
+            preload="metadata"
+            poster="assets/images/gestar-demo-cover.jpg"
+          >
+            <source src="assets/videos/gestar-demo.mp4" type="video/mp4" />
+            你的浏览器暂不支持 video 标签。
+          </video>
+
+          <div class="case-demo-overlay">
+            <span>Hover to play</span>
+          </div>
+        </div>
+      </div>
+
 
       <div class="case-steps">
         <article class="case-step reveal-card">
@@ -1878,6 +2118,103 @@
             </ul>
           </div>
         </div>
+              <div class="multi-horizontal reveal-up">
+        <article class="h-card story-card">
+          <div class="h-card-index">05</div>
+          <div class="h-card-main">
+            <div class="grid-kicker">Execution / Delivery</div>
+            <h3>活动策划 · 0→1 的交付能力</h3>
+            <p>
+              独立负责学术会议全流程策划，从议程、物料到现场体验，把复杂事情做到有秩序。
+            </p>
+          </div>
+          <div class="h-card-detail">
+            <strong>这对 AI 产品的启发：</strong>
+            <ul>
+              <li>复杂项目拆解能力，直接迁移到产品项目管理。</li>
+              <li>多方协调经验，有利于算法、设计、研发之间的沟通。</li>
+              <li>对“交付体验”的重视，让我不仅关注功能，也关注过程。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="h-card">
+          <div class="h-card-index">06</div>
+          <div class="h-card-main">
+            <div class="grid-kicker">Academic Base</div>
+            <h3>科研训练 · 结构化思考</h3>
+            <p>
+              从通信工程到电子信息硕士，系统训练了我拆解问题、建立假设、验证结论的能力。
+            </p>
+          </div>
+          <div class="h-card-detail">
+            <strong>这对 AI 产品的启发：</strong>
+            <ul>
+              <li>更擅长把模糊问题转成可验证的问题。</li>
+              <li>对技术边界更敏感，能判断“能做”和“该做”的区别。</li>
+              <li>在复杂信息中提炼结构，是我做产品方案的重要底层能力。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="h-card">
+          <div class="h-card-index">07</div>
+          <div class="h-card-main">
+            <div class="grid-kicker">Reflection</div>
+            <h3>持续输入 · 保持判断更新</h3>
+            <p>
+              我习惯长期观察 AI 产品、记录感受与差异，把“使用体验”转化为“产品判断”。
+            </p>
+          </div>
+          <div class="h-card-detail">
+            <strong>这对 AI 产品的启发：</strong>
+            <ul>
+              <li>不是只追热点，而是持续建立自己的产品判断框架。</li>
+              <li>愿意长时间观察用户体验中的微小变化。</li>
+              <li>在信息密度高的领域里保持清晰感知。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="h-card">
+          <div class="h-card-index">08</div>
+          <div class="h-card-main">
+            <div class="grid-kicker">Collaboration</div>
+            <h3>团队角色 · 既能带队，也能补位</h3>
+            <p>
+              无论是比赛、项目还是活动，我都习惯在关键时刻承担“连接者”和“推进者”的角色。
+            </p>
+          </div>
+          <div class="h-card-detail">
+            <strong>这对 AI 产品的启发：</strong>
+            <ul>
+              <li>知道什么时候推动，什么时候倾听，什么时候协调。</li>
+              <li>能在多角色之间建立共识，减少沟通损耗。</li>
+              <li>愿意对结果负责，而不只是完成分内任务。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="h-card story-card">
+          <div class="h-card-index">09</div>
+          <div class="h-card-main">
+            <div class="grid-kicker">Why Me</div>
+            <h3>我的人设，不是一句标签</h3>
+            <p>
+              我想呈现的不是“一个会做产品的学生”，而是一个未来能承担复杂 AI 产品判断的人。
+            </p>
+          </div>
+          <div class="h-card-detail">
+            <strong>我希望你记住的，是这三个关键词：</strong>
+            <ul>
+              <li>技术深度：我真的做过系统。</li>
+              <li>产品思维：我知道为什么做、为谁做、值不值得做。</li>
+              <li>审美素养：我理解“被用户感知”的体验差异。</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
 
         <div class="grid-item reveal-card" style="transition-delay:.06s;">
           <div class="image-container">
@@ -1926,91 +2263,6 @@
               <li>审美直觉让我对 UI/UX 细节更敏感。</li>
               <li>镜头前表达能力，帮助我更好地做方案阐述和产品演示。</li>
               <li>对细节的极致打磨，映射到产品体验中的完成度追求。</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="grid-item reveal-card story-card" style="transition-delay:.24s;">
-          <div class="image-container">
-            <img src="【请替换为学术会议/活动组织照片URL】" alt="活动组织">
-          </div>
-          <div class="grid-kicker">Execution / Delivery</div>
-          <h3>活动策划 · 0→1 的交付能力</h3>
-          <p>独立负责学术会议全流程策划，从议程、物料到现场体验，把复杂事情做到有秩序。</p>
-          <div class="insight-box">
-            <strong>这对 AI 产品的启发：</strong>
-            <ul>
-              <li>复杂项目拆解能力，直接迁移到产品项目管理。</li>
-              <li>多方协调经验，有利于算法、设计、研发之间的沟通。</li>
-              <li>对“交付体验”的重视，让我不仅关注功能，也关注过程。</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="grid-item reveal-card" style="transition-delay:.30s;">
-          <div class="image-container">
-            <img src="【请替换为校园/学习场景照片URL】" alt="学习场景">
-          </div>
-          <div class="grid-kicker">Academic Base</div>
-          <h3>科研训练 · 结构化思考</h3>
-          <p>从通信工程到电子信息硕士，系统训练了我拆解问题、建立假设、验证结论的能力。</p>
-          <div class="insight-box">
-            <strong>这对 AI 产品的启发：</strong>
-            <ul>
-              <li>更擅长把模糊问题转成可验证的问题。</li>
-              <li>对技术边界更敏感，能判断“能做”和“该做”的区别。</li>
-              <li>在复杂信息中提炼结构，是我做产品方案的重要底层能力。</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="grid-item reveal-card" style="transition-delay:.36s;">
-          <div class="image-container">
-            <img src="【请替换为日常生活/咖啡馆/阅读照片URL】" alt="阅读与思考">
-          </div>
-          <div class="grid-kicker">Reflection</div>
-          <h3>持续输入 · 保持判断更新</h3>
-          <p>我习惯长期观察 AI 产品、记录感受与差异，把“使用体验”转化为“产品判断”。</p>
-          <div class="insight-box">
-            <strong>这对 AI 产品的启发：</strong>
-            <ul>
-              <li>不是只追热点，而是持续建立自己的产品判断框架。</li>
-              <li>愿意长时间观察用户体验中的微小变化。</li>
-              <li>在信息密度高的领域里保持清晰感知。</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="grid-item reveal-card" style="transition-delay:.42s;">
-          <div class="image-container">
-            <img src="【请替换为团队合照URL】" alt="团队协作">
-          </div>
-          <div class="grid-kicker">Collaboration</div>
-          <h3>团队角色 · 既能带队，也能补位</h3>
-          <p>无论是比赛、项目还是活动，我都习惯在关键时刻承担“连接者”和“推进者”的角色。</p>
-          <div class="insight-box">
-            <strong>这对 AI 产品的启发：</strong>
-            <ul>
-              <li>知道什么时候推动，什么时候倾听，什么时候协调。</li>
-              <li>能在多角色之间建立共识，减少沟通损耗。</li>
-              <li>愿意对结果负责，而不只是完成分内任务。</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="grid-item reveal-card story-card" style="transition-delay:.48s;">
-          <div class="image-container">
-            <img src="【请替换为个人形象照URL】" alt="个人形象">
-          </div>
-          <div class="grid-kicker">Why Me</div>
-          <h3>我的人设，不是一句标签</h3>
-          <p>我想呈现的不是“一个会做产品的学生”，而是一个未来能承担复杂 AI 产品判断的人。</p>
-          <div class="insight-box">
-            <strong>我希望你记住的，是这三个关键词：</strong>
-            <ul>
-              <li>技术深度：我真的做过系统。</li>
-              <li>产品思维：我知道为什么做、为谁做、值不值得做。</li>
-              <li>审美素养：我理解“被用户感知”的体验差异。</li>
             </ul>
           </div>
         </div>
@@ -2195,6 +2447,21 @@
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+        // case demo hover play
+    const demoWrap = document.querySelector('.case-demo-video-wrap');
+    const demoVideo = document.querySelector('.case-demo-video');
+
+    if (demoWrap && demoVideo) {
+      demoWrap.addEventListener('mouseenter', () => {
+        demoVideo.play().catch(() => {});
+      });
+
+      demoWrap.addEventListener('mouseleave', () => {
+        demoVideo.pause();
+        demoVideo.currentTime = 0;
+      });
+    }
+
   </script>
 </body>
 </html>
