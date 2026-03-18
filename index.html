@@ -54,6 +54,35 @@
 
       transition: left 0.4s ease, transform 0.3s ease;
     }
+    
+    .avatar::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background: linear-gradient(
+        to right,
+        rgba(247,244,238,0.95) 0%,
+        rgba(247,244,238,0.88) 18%,
+        rgba(247,244,238,0.55) 38%,
+        rgba(247,244,238,0.18) 58%,
+        rgba(247,244,238,0) 78%
+      );
+    }
+
+    .avatar::after {
+      content: "";
+      position: absolute;
+      top: 10px;
+      bottom: 10px;
+      left: 0;
+      width: 1px;
+      background: rgba(17,17,17,0.08);
+      z-index: 3;
+      pointer-events: none;
+    }
+
 
 
     .avatar img {
@@ -1316,9 +1345,6 @@
 </div>
 
 
-<div class="avatar">
-  <img src="assets/images/avatar.jpg" alt="头像">
-</div>
 
 
   <!-- NAV -->
