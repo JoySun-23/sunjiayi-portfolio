@@ -1628,15 +1628,17 @@
           <div class="hero-highlight">
             <div class="mini-card reveal-card" style="transition-delay: .08s;">
               <strong>学术</strong>
-              <span>CCF-A 一作在投</span>
+              <span>CCF-A 
+                一作在投</span>
             </div>
             <div class="mini-card reveal-card" style="transition-delay: .12s;">
               <strong>项目</strong>
-              <span>端到端 AI 系统</span>
+              <span>端到端 
+                AI 系统</span>
             </div>
             <div class="mini-card reveal-card" style="transition-delay: .16s;">
               <strong>荣誉</strong>
-              <span>校三好 / 优干 / 奖学金</span>
+              <span>校三好 / 优干 / 校优秀毕业生</span>
             </div>
             <div class="mini-card reveal-card" style="transition-delay: .20s;">
               <strong>个性</strong>
@@ -1775,7 +1777,8 @@
           <div class="case-meta">
             <div class="case-meta-item">
               <span>角色</span>
-              <strong>学生一作 / 全链路主导</strong>
+              <strong>学生一作 /
+                全链路主导</strong>
             </div>
             <div class="case-meta-item">
               <span>论文</span>
@@ -1799,7 +1802,7 @@
             <strong style="color:var(--ink);">在传统感知方案失效的场景里，仍然可能存在新的交互基础设施。</strong>
           </p>
           <ul class="business-list">
-            <li><strong style="color:var(--ink);">场景价值：</strong>面向运动、户外作业、导航、无障碍辅助等高光照/高干扰环境，补足现有交互方案盲区。</li>
+            <li><strong style="color:var(--ink);">场景价值：</strong>面向运动、户外作业等场景，不依赖摄像头数据采集，保护用户隐私，同时不依赖光照环境下提供稳定的非接触式操控体验。</li>
             <li><strong style="color:var(--ink);">产品价值：</strong>用“无接触、免部署、全天候”的交互方式，为可穿戴设备与端侧 AI 打开新的体验入口。</li>
             <li><strong style="color:var(--ink);">商业潜力：</strong>可延展到车载、户外智能终端、特种作业、辅助出行等延迟敏感型场景。</li>
             <li><strong style="color:var(--ink);">PM 启发：</strong>真正的创新，不只是追随热点能力，而是识别用户需求和技术空白之间的新缝隙。</li>
@@ -1858,8 +1861,8 @@
             <h3 class="step-title">识别“户外交互”的空白地带</h3>
             <p>
               我不是先从技术出发，而是先从场景出发。现有手势识别大多依赖摄像头、雷达或局域信号，
-              但在户外高光照、遮挡、移动中使用时，这些方案都存在明显限制。
-              我意识到，GNSS 卫星信号具备“天然覆盖、无需额外部署、不受近距离遮挡影响”的特征，
+              但在户外高光照或低光照、偏僻地域中使用时，这些方案都存在明显限制。
+              我意识到，GNSS 卫星信号具备"天然覆盖、无需额外部署、不受近距离遮挡影响、且不依赖摄像头数据采集保护用户隐私"的特征，
               它可能成为一个此前没人认真做过的感知入口。
             </p>
             <div class="quote-box">
@@ -1959,21 +1962,19 @@
 
         <article class="insight-item reveal-card" style="transition-delay:.08s;">
           <div class="insight-tag">数据与模型</div>
-          <h3 class="insight-title">从 Gestar 的稀疏数据问题，我更理解 AI 产品里的真实取舍</h3>
+          <h3 class="insight-title">数据与模型：从 Gestar 的核心挑战，我更理解 AI 产品里的"不可能三角"</h3>
           <p class="insight-body">
-            在 Gestar 中，数据稀疏是第一性难题。我通过 Diffusion-based 数据增强和分布生成策略解决了训练样本不足的问题。
-            这让我更深刻地理解：AI 产品里最关键的决策，常常不是“选哪个模型”，而是如何在数据质量、成本、效果与交付速度之间做平衡。
-            这也是为什么我认为懂训练数据与评估逻辑的 PM，会比只会写流程的 PM 更有长期价值。
+            在 Gestar 项目中，我们遇到的最大困难，是如何在 GNSS 信号的极致"微弱"与"复杂"中，提取出足以支撑高精度 AI 识别的"稳定且有判别力"的手势特征。信号微弱、稀疏、噪声大，缺乏先例与经验，且难以将"物理现象"转化为"机器学习特征"。我们通过分布式感知与 G-Map 编码、精细的特征工程、数据与验证的循环迭代克服了这些困难。
+            这段经历让我更深刻地理解：AI 产品里最关键的决策，常常不是"选哪个模型"，而是如何在技术可行性、数据质量、成本约束与交付速度之间做平衡，在所有人都认为"不能做"的地方找到"可以做成"的路径。这也是为什么我认为懂训练数据与评估逻辑、理解技术边界、敢于在不确定性中做产品判断的 PM，会比只会写流程的 PM 更有长期价值。
           </p>
         </article>
 
         <article class="insight-item reveal-card" style="transition-delay:.16s;">
           <div class="insight-tag">端侧 AI</div>
-          <h3 class="insight-title">端侧 AI 的机会，不是“更小的模型”，而是“重新定义延迟敏感场景”</h3>
+          <h3 class="insight-title">端侧 AI 的机会，不是“更小的模型”，而是"为穿戴设备定义新的交互方式"</h3>
           <p class="insight-body">
-            很多人把端侧 AI 理解为云端能力的缩水版，但我更愿意把它理解为另一套产品逻辑：
-            当延迟、离线、隐私、设备协同成为核心约束时，产品本身的交互形态也会被重写。
-            Gestar 的低延迟与双端交付经历让我相信，车载、可穿戴、实时辅助、运动反馈等场景，是未来被显著低估的 AI 产品机会。
+            很多人把端侧 AI 理解为云端能力的缩水版，但我更愿意把它理解为另一套产品逻辑：当设备形态从手机延伸到手表、手环等穿戴设备时，交互方式也需要重新设计。Gestar 的端侧部署经历让我相信，穿戴设备不应该只是手机的附属品，而可以成为独立的信息输入和交互入口。
+            通过利用 GNSS 等环境信号，我们可以在穿戴设备上实现手机无法完成的交互场景，如运动中的手势控制、户外作业的便捷操作等。同时，不依赖摄像头的技术路径也为隐私敏感场景提供了新的可能性。
           </p>
         </article>
       </div>
@@ -2155,12 +2156,12 @@
           </div>
           <div class="grid-kicker">Empathy / Observation</div>
           <h3>旅行 · 用户视角的敏锐度</h3>
-          <p>足迹遍布 20+ 城市，我喜欢把自己放进陌生环境里，观察细节与差异。</p>
+          <p>足迹遍布7个国家，我喜欢把自己放进陌生环境里，观察细节与差异。</p>
           <div class="insight-box">
             <strong>这对 AI 产品的启发：</strong>
             <ul>
               <li>陌生环境中的不适感，让我更理解首次使用产品时的困惑。</li>
-              <li>多元城市经验，帮助我理解不同用户群体的行为差异。</li>
+              <li>多元文化经验，帮助我理解不同用户群体的行为差异。</li>
               <li>记录与分享习惯，也强化了我的洞察表达能力。</li>
             </ul>
           </div>
@@ -2263,7 +2264,7 @@
           <div class="h-card-detail">
             <strong>我希望你记住的，是这三个关键词：</strong>
             <ul>
-              <li>技术深度：我真的做过系统。</li>
+              <li>技术深度：从0到1主导过完整的 AI 产品全链路开发。</li>
               <li>产品思维：我知道为什么做、为谁做、值不值得做。</li>
               <li>审美素养：我理解“被用户感知”的体验差异。</li>
             </ul>
@@ -2282,7 +2283,7 @@
           <span class="eyebrow" style="color:rgba(255,255,255,.55);">Let’s Connect</span>
           <h2 class="contact-title">一起做真正<br><em>有价值的</em><br>AI 产品</h2>
           <p class="contact-desc">
-            目前正在寻找 AI 产品经理 / AI 产品运营 / AI 相关实习与校招机会。  
+            目前正在寻找 AI 产品经理 / 技术产品 / AI 相关实习与校招机会。  
             如果你正在寻找一个既懂技术、又有产品判断力，同时具备表达与体验感知能力的人，欢迎联系我。
           </p>
 
@@ -2308,7 +2309,7 @@
             </div>
             <div class="contact-item">
               <div class="contact-item-label">求职方向</div>
-              <div class="contact-item-value">AI 产品经理 / AI 产品运营 / 智能交互相关岗位</div>
+              <div class="contact-item-value">AI 产品经理 / 技术产品 / 智能交互相关岗位</div>
             </div>
           </div>
         </div>
