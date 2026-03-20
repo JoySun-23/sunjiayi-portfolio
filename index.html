@@ -1514,9 +1514,28 @@
       .multi-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-      .image-container { height: 180px; }
+      .image-container {
+        height: auto;
+        aspect-ratio: unset;
+      }
+
+      .image-container img {
+        width: 100%;
+        height: auto;
+        object-fit: unset;
+      }
       .hero-title { font-size: clamp(54px, 16vw, 92px); }
       .contact-title { font-size: 48px; }
+      .case-demo-video-wrap {
+        min-height: unset;
+        height: auto;
+      }
+
+      .case-demo-video {
+        min-height: unset;
+        height: auto;
+        object-fit: unset;
+      }
     }
 
     @media (max-width: 560px) {
@@ -1554,6 +1573,25 @@
       .back-to-top {
         right: 18px;
         bottom: 22px;
+      }
+      .image-container {
+        height: auto;
+      }
+
+      .image-container img {
+        height: auto;
+        object-fit: unset;
+      }
+
+      .case-demo-video-wrap {
+        min-height: unset;
+        height: auto;
+      }
+
+      .case-demo-video {
+        min-height: unset;
+        height: auto;
+        object-fit: unset;
       }
     }
 
