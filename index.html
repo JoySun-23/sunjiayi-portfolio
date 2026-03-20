@@ -1514,28 +1514,32 @@
       .multi-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-      .image-container {
-        height: auto;
-        aspect-ratio: unset;
-      }
-
-      .image-container img {
-        width: 100%;
-        height: auto;
-        object-fit: unset;
-      }
       .hero-title { font-size: clamp(54px, 16vw, 92px); }
       .contact-title { font-size: 48px; }
       .case-demo-video-wrap {
         min-height: unset;
         height: auto;
       }
+      .image-container {
+        height: auto !important;
+      }
+
+      .image-container img {
+        height: auto !important;
+        object-fit: contain !important;
+      }
+
+      .case-demo-video-wrap {
+        min-height: unset !important;
+        height: auto !important;
+      }
 
       .case-demo-video {
-        min-height: unset;
-        height: auto;
-        object-fit: unset;
+        min-height: unset !important;
+        height: auto !important;
+        object-fit: contain !important;
       }
+
     }
 
     @media (max-width: 560px) {
@@ -1575,23 +1579,23 @@
         bottom: 22px;
       }
       .image-container {
-        height: auto;
+        height: auto !important;
       }
 
       .image-container img {
-        height: auto;
-        object-fit: unset;
+        height: auto !important;
+        object-fit: contain !important;
       }
 
       .case-demo-video-wrap {
-        min-height: unset;
-        height: auto;
+        min-height: unset !important;
+        height: auto !important;
       }
 
       .case-demo-video {
-        min-height: unset;
-        height: auto;
-        object-fit: unset;
+        min-height: unset !important;
+        height: auto !important;
+        object-fit: contain !important;
       }
     }
 
