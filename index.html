@@ -1420,50 +1420,60 @@
 
     /* 1. 头像的交互效果 */
 
-    @media (max-width: 1100px) {
-      /* 对所有屏幕进行头像半掩显示的调整 */
-      .avatar-wrap {
-        position: fixed;
-        top: 20vh; /* 头像距离顶部 */
-        left: -100px; /* 初始头像半掩显示 */
-        width: 80px; /* 设置较小的宽度 */
-        height: 80px; /* 设置较小的高度 */
-        z-index: 2000;
-        transition: left 0.4s ease; /* 过渡效果 */
+        @media (max-width: 1100px) {
+      .hero-grid,
+      .case-hero,
+      .contact-grid,
+      .about-grid,
+      .skills-layout {
+        grid-template-columns: 1fr;
       }
-
-      .avatar {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        object-fit: cover;
+      .h-card {
+        grid-template-columns: 56px 1fr;
       }
-
-      /* 当点击区域时，头像展开 */
-      .avatar-wrap.show-avatar {
-        left: 0; /* 展开头像 */
+      .h-card-detail {
+        grid-column: 1 / -1;
       }
-
-      .avatar-wrap.touch-zone {
-        width: 20vw; /* 增加触摸区域的宽度 */
-        height: 100%;
+      .case-meta {
+        grid-template-columns: repeat(2, 1fr);
       }
-    }
-
-    /* 2. Avatar on mobile */
-    @media (max-width: 768px) {
-      .avatar {
-        left: 2vw; /* 设置头像的左边距 */
-        width: 25vw; /* 头像宽度为屏幕宽度的 25% */
-        top: 15vh; /* 头像的位置从顶部开始 */
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .multi-grid {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
 
     @media (max-width: 820px) {
-      .nav-toggle {
-        display: inline-flex; /* 移动端展示菜单按钮 */
+      /* 头像抽屉 — 移动端专属，圆角矩形，不影响桌面 */
+      .avatar-wrap {
+        position: fixed;
+        top: 22vh;
+        left: 0;
+        width: 28px;        /* 只露出一小条，作为触发区 */
+        height: 200px;
+        z-index: 2000;
       }
 
+      .avatar {
+        position: absolute;
+        top: 0;
+        left: -136px;       /* 初始收起，只有右侧小条可见 */
+        width: 160px;
+        height: 200px;
+        border-radius: 16px; /* 圆角矩形 */
+        transition: left 0.4s cubic-bezier(.2,.8,.2,1), transform 0.3s ease;
+      }
+
+      .avatar-wrap:hover .avatar,
+      .avatar-wrap.show-avatar .avatar {
+        left: 0;
+      }
+
+      /* 导航 */
+      .nav-toggle { display: inline-flex; }
+      .nav-cta { display: none; }
       .nav-links {
         position: absolute;
         top: 72px;
@@ -1471,8 +1481,8 @@
         right: var(--pad);
         padding: 16px;
         border-radius: 20px;
-        background: rgba(247, 244, 238, 0.94);
-        border: 1px solid rgba(17, 17, 17, 0.08);
+        background: rgba(247,244,238,0.94);
+        border: 1px solid rgba(17,17,17,0.08);
         backdrop-filter: blur(16px);
         box-shadow: var(--shadow);
         display: none;
@@ -1480,48 +1490,67 @@
         align-items: flex-start;
         gap: 14px;
       }
+      .nav-links.show { display: flex; }
 
-      .nav-links.show {
-        display: flex;
+      /* 布局 */
+      .h-card {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 22px;
       }
-
-      /* 3. Demo 展示优化 */
-      .case-demo-video-wrap {
-        min-height: 320px; /* 确保最小高度适合移动设备 */
-        height: auto;
-        width: 100%;
+      .h-card-index {
+        justify-content: flex-start;
+        font-size: 36px;
       }
-
-      .case-demo-video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* 保证视频比例自适应 */
+      .h-card-main h3 { font-size: 26px; }
+      .section-header,
+      .case-step {
+        grid-template-columns: 1fr;
       }
-
-      .case-demo-overlay {
-        padding: 12px; /* 适配移动端的按钮大小 */
+      .skill-groups,
+      .hero-highlight {
+        grid-template-columns: 1fr;
       }
+      .multi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .image-container { height: 180px; }
+      .hero-title { font-size: clamp(54px, 16vw, 92px); }
+      .contact-title { font-size: 48px; }
     }
 
     @media (max-width: 560px) {
+      /* 头像在小屏手机进一步缩小 */
+      .avatar-wrap {
+        width: 22px;
+        height: 160px;
+        top: 25vh;
+      }
+
+      .avatar {
+        left: -110px;
+        width: 128px;
+        height: 160px;
+        border-radius: 14px;
+      }
+
+      .avatar-wrap.show-avatar .avatar {
+        left: 0;
+      }
+
+      /* 布局 */
       .stats-grid,
       .case-meta,
       .multi-grid {
-        grid-template-columns: 1fr; /* 单列布局，优化内容显示 */
+        grid-template-columns: 1fr;
       }
-
       .hero-actions,
       .contact-actions {
-        flex-direction: column; /* 垂直排列按钮 */
+        flex-direction: column;
         align-items: stretch;
       }
-
-      .btn-primary,
-      .btn-secondary,
-      .contact-btn {
-        width: 100%; /* 按钮宽度占满屏幕 */
-      }
-
+      .btn-primary, .btn-secondary,
+      .contact-btn { width: 100%; }
       .back-to-top {
         right: 18px;
         bottom: 22px;
